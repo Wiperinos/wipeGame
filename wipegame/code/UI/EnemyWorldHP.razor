@@ -1,0 +1,20 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="HP">
+		<p> HP : @Uinfo.MaxHealth </p>
+	</div>
+</root>
+
+@code
+{
+
+		[Property] UnitInfo Uinfo { get; set; }
+
+		protected override int BuildHash()
+		{
+			return System.HashCode.Combine("");
+		}
+	}

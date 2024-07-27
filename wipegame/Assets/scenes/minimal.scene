@@ -55,341 +55,565 @@
       ]
     },
     {
-      "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+      "__guid": "2f01c029-5dbe-4072-b30f-c192abec5e7c",
       "Flags": 0,
-      "Name": "Plane",
-      "Scale": "5,5,5",
+      "Name": "Map",
       "Enabled": true,
       "Components": [
         {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "0b6a18bf-fdb8-4661-970e-ef635bfa9baa",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/plane.vmdl",
-          "RenderType": "On",
-          "Tint": "0.39546,0.51163,0.27128,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "0715cb55-1733-4f5e-8560-c288b8695631",
-          "Center": "0,0,-5",
-          "IsTrigger": false,
-          "Scale": "100,100,10",
-          "Static": false
-        }
-      ]
-    },
-    {
-      "__guid": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
-      "Flags": 0,
-      "Name": "Cube",
-      "Position": "21.41682,74.1244,14.40159",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "b9121ffa-617c-4ccc-a2aa-8acc98727590",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "8bb3ebcf-1ec9-4b20-bf31-4aece0950008",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "4aaa0334-6785-4716-9bae-869559ea6e10",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "__guid": "523e3e8f-a4ec-4ec1-af9a-d86ffc9c17e1",
-      "Flags": 0,
-      "Name": "Cube (1)",
-      "Position": "40.81348,46.97572,14.40159",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "9e8a546d-a41d-44b5-9906-22cea00e1066",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "adf22580-7a25-4d7f-b1c3-3fb8fabf1612",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "e53bfcb0-7f44-41d0-8d51-263bdc173a57",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "__guid": "96aac245-4580-46dd-8af2-5fb852eab217",
-      "Flags": 0,
-      "Name": "Cube (3)",
-      "Position": "-39.01521,-29.17817,43.67614",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "0ee8fbc7-9f53-4e98-915d-a5c1a3445132",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "c171be36-cebc-4caf-b1a8-4abe6c6a6ef3",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "dddc478e-904e-433b-9313-91a820faded2",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "__guid": "08dd34cc-1d6d-4dd8-bcda-aba62ed4c900",
-      "Flags": 0,
-      "Name": "Cube (4)",
-      "Position": "-67.13545,10.85727,14.40159",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "de5b43ea-aacb-4ea0-a400-939d883fdc94",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "8b92cb7e-97a4-4fbe-9f8e-5515eac5190a",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "f5efb182-22f4-41b6-b05d-04b694e42e98",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "__guid": "c60525a9-41b7-439a-817c-8eb3c0b06b7f",
-      "Flags": 0,
-      "Name": "Cube (5)",
-      "Position": "-47.7388,-16.2914,14.40159",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "a74dfa3d-c3c7-4795-a751-a7f96a4d8f90",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "be45ea56-b5c4-481c-9bd2-1e69267d3ee4",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "1775976e-c68c-471e-82e9-d74b8ae9db12",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "__guid": "5b483a09-bbf2-4949-98c7-a73b789d0ee7",
-      "Flags": 0,
-      "Name": "Cube (2)",
-      "Position": "49.53707,34.08896,43.67614",
-      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
-      "Scale": "0.5632889,0.5632889,0.5632889",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "ac284ab8-cdb7-4ba6-92de-d9be36088b1b",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0.93333,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "ca4eb284-231e-4c84-9bc4-7ba89962f307",
-          "Center": "0,0,0",
-          "IsTrigger": false,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "61ef15dd-3eb2-4f52-8b9a-315f477f79b7",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ]
-    },
-    {
-      "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-      "Flags": 0,
-      "Name": "Camera",
-      "Position": "-267.452,-379.653,297.7903",
-      "Rotation": "-0.1448582,0.2860239,0.4279631,0.8450171",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 60,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 10
-        },
-        {
-          "__type": "Sandbox.Bloom",
-          "__guid": "d73ef723-c888-41d4-802e-f797c79318be",
-          "BloomColor": {
-            "color": [
-              {
-                "c": "1,1,1,1"
-              },
-              {
-                "t": 1,
-                "c": "1,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "BloomCurve": [
-            {
-              "y": 0.5
-            },
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "Mode": "Additive",
-          "Strength": 0.5,
-          "Threshold": 0.5,
-          "ThresholdWidth": 0.5
-        },
-        {
-          "__type": "Sandbox.Tonemapping",
-          "__guid": "9d76f362-7227-40eb-a189-69353c780c46",
+          "__type": "Sandbox.MapInstance",
+          "__guid": "01b12b82-2409-4a8f-abd7-8f3242888e8b",
           "__version": 1,
-          "ExposureBias": 2,
-          "ExposureCompensation": 0,
-          "ExposureMethod": "RGB",
-          "MaximumExposure": 2,
-          "MinimumExposure": 1,
-          "Mode": "Legacy",
-          "Rate": 1
-        },
+          "EnableCollision": true,
+          "MapName": "maps/testlevel.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "b2343a2e-13c2-4764-908f-4d709731cd62",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "239.3909,43.28402,77.44113",
+      "Enabled": true,
+      "Components": [
         {
-          "__type": "Sandbox.Sharpen",
-          "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
-          "Scale": 0.2
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "a904b7a5-510e-4358-b534-c262bedcc300",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-51.30377,-45.54845,64",
+              "51.30377,-45.54845,64",
+              "51.30377,45.54845,64",
+              "-51.30377,45.54845,64",
+              "-51.30377,45.54845,-64",
+              "51.30377,45.54845,-64",
+              "51.30377,-45.54845,-64",
+              "-51.30377,-45.54845,-64"
+            ],
+            "TextureCoord": [
+              "0.4008107,0.3558472",
+              "-0.4008107,-0.5",
+              "0.4008107,-0.3558472",
+              "-0.3558472,-0.5",
+              "-0.4008107,-0.3558472",
+              "-0.4008107,-0.5",
+              "-0.4008107,0.3558472",
+              "-0.3558472,-0.5",
+              "0.4008107,-0.3558472",
+              "0.4008107,0.5",
+              "0.4008107,0.3558472",
+              "0.3558472,0.5",
+              "-0.4008107,0.3558472",
+              "0.4008107,0.5",
+              "-0.4008107,-0.3558472",
+              "0.3558472,0.5",
+              "0.3558472,-0.5",
+              "-0.4008107,0.5",
+              "-0.3558472,0.5",
+              "0.4008107,-0.5",
+              "-0.3558472,0.5",
+              "0.4008107,-0.5",
+              "0.3558472,-0.5",
+              "-0.4008107,0.5"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.2500001",
+              "0.25,0.2500001",
+              "0.2500001,0.25",
+              "0.2500001,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "66.43646,173.136",
+              "66.43646,173.136",
+              "173.136,309.7645",
+              "338.864,309.7645",
+              "445.5636,309.7645",
+              "66.43639,309.7645"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              2
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat",
+              "stone.vmat",
+              "materials/walls/wall_1.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true,
+          "Surface": "surfaces/brick.surface"
+        }
+      ]
+    },
+    {
+      "__guid": "c060741d-1cf5-43ba-b1d5-42cfa8e43917",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "214.86,-146.8726,70.80388",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "844979bb-47c3-4411-9437-e03c795e0b18",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-24.0708,-51.86889,64",
+              "24.0708,-51.86889,64",
+              "24.0708,51.86889,64",
+              "-24.0708,51.86889,64",
+              "-24.0708,51.86889,-64",
+              "24.0708,51.86889,-64",
+              "24.0708,-51.86889,-64",
+              "-24.0708,-51.86889,-64"
+            ],
+            "TextureCoord": [
+              "0.1880531,0.4052257",
+              "-0.1880531,-0.5",
+              "0.1880531,-0.4052257",
+              "-0.4052257,-0.5",
+              "-0.1880531,-0.4052257",
+              "-0.1880531,-0.5",
+              "-0.1880531,0.4052257",
+              "0,0",
+              "0.1880531,-0.4052257",
+              "0.1880531,0.5",
+              "0.1880531,0.4052257",
+              "0.4052257,0.5",
+              "-0.1880531,0.4052257",
+              "0.1880531,0.5",
+              "-0.1880531,-0.4052257",
+              "0.9999999,1",
+              "0.9999999,0",
+              "-0.1880531,0.5",
+              "0,1",
+              "0.1880531,-0.5",
+              "-0.4052257,0.5",
+              "0.1880531,-0.5",
+              "0.4052257,-0.5",
+              "-0.1880531,0.5"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.1013064,0.125",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "164.5601,436.5095",
+              "164.5601,436.5095",
+              "86.21442,54.43103",
+              "75.49042,283.2155",
+              "347.4399,283.2155",
+              "164.5601,283.2155"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat",
+              "models/metalpanels.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "f413f11d-4815-4c50-ba32-b9f1a4999bbb",
+      "Flags": 0,
+      "Name": "enemy",
+      "Position": "62.60777,-156.9946,38",
+      "Enabled": true,
+      "__Prefab": "prefab/enemy.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "c2060f5c-c772-4f99-ba2f-f1c1286eb78b",
+      "Flags": 0,
+      "Name": "player",
+      "Position": "-63.24603,-30.25384,3.999969",
+      "Tags": "player",
+      "Enabled": true,
+      "__Prefab": "prefab/player.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "16c06216-0630-43b8-8208-413d59d94e09",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "75.56015,54.30051,64.00039",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "df1ae7af-0446-4864-a319-c5e6457c4d1e",
+          "Collision": "Mesh",
+          "Color": "0.92093,0.23559,0.23559,1",
+          "HideInGame": false,
+          "IsTrigger": true,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACk2TB27DQAwE6W7FcSynd6f33nvy/1eFA4yAE7AwvUvdkVxqGhF/iWmCp53oJvqJYWIuMZ9YSNSJxcRyYjWxnthMbCd2E3uJluCc8jko\u002BI53RMHtF1rP\u002B8t6jov3BtYWcuSeqvFuZd0hR\u002B55ce7InkKO3Es1zh7bb8iRe13cO3EWIUfurVrlLJlTyJF7X9S15AxDjtxHNWpbcb4hR\u002B5zUfeasw85cl/VqH1DX0KO3Peiry09CzlyP9XobUc/Q47cbzWemb8hR\u002B6vfbb0stmD2r040kv\u002BH8qhN7sxU2sXXjf5vHsi19HrnnGtdqbXXb0eGNdqF77T0\u002BvKuFa70uu\u002BXo\u002BMa7Ubzxzo9di4VrvT66FeTwrv0R68s9LrqXGt9qTXAK/ZEWJ0tBdrAnjNjhCjo70l8BrgNTtCjI72Yc0Ar9kRYnS0rwReA7xmR5pvHu3HngBesyPNd4CGp8TsAn6yA/iIV/jBzJkrs2M\u002BzIA\u002B6YV6qYl7OfsfWHQxHJQEAAA=",
+            "Positions": [
+              "0,39.22984,-39.22984",
+              "15.01261,36.24365,-39.22984",
+              "27.73969,27.73969,-39.22984",
+              "36.24365,15.01261,-39.22984",
+              "39.22984,-0.000001714791,-39.22984",
+              "36.24365,-15.01261,-39.22984",
+              "27.73969,-27.73969,-39.22984",
+              "15.0126,-36.24365,-39.22984",
+              "-0.000003429582,-39.22984,-39.22984",
+              "-15.01261,-36.24365,-39.22984",
+              "-27.73969,-27.73968,-39.22984",
+              "-36.24366,-15.0126,-39.22984",
+              "-39.22984,0.0000004678112,-39.22984",
+              "-36.24364,15.01262,-39.22984",
+              "-27.73968,27.7397,-39.22984",
+              "-15.01261,36.24365,-39.22984",
+              "0,0,39.22984"
+            ],
+            "TextureCoord": [
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0",
+              "1,0,0"
+            ],
+            "TextureVAxis": [
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0",
+              "0,1,0"
+            ],
+            "TextureScale": [
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1",
+              "1,1"
+            ],
+            "TextureOffset": [
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0",
+              "0,0"
+            ],
+            "MaterialIndex": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true
         }
       ]
     }
@@ -418,6 +642,10 @@
   "Title": "minimal",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "oleshkus.wall_1",
+    "pilgrim.metal_panels",
+    "wiperinos.stone"
+  ],
   "__version": 1
 }

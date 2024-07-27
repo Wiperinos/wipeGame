@@ -1,0 +1,76 @@
+{
+  "RootObject": {
+    "__guid": "5366122f-c2a2-448a-ae19-dc776c51cf76",
+    "Flags": 0,
+    "Name": "enemy",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "UnitInfo",
+        "__guid": "ef5a5816-bc1c-4c31-998a-ebc6330191ad",
+        "HealthRegenAmount": 0.3,
+        "HealthRegenTimer": 5,
+        "MaxHealth": 3,
+        "Team": "Snot"
+      },
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "83580143-8cbc-4a7b-80b5-554d602d69ef",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "rock kit/rock_1.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Sandbox.SphereCollider",
+        "__guid": "f6c7abb3-df17-46c5-b6cb-a71b428fc3e3",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Radius": 41.200047,
+        "Static": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "a0cd1b24-6387-4e81-8097-b53995d18f44",
+        "Flags": 0,
+        "Name": "World",
+        "Position": "0,0,35",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "0d88da53-ba93-4fb7-b7e4-d44bb02a7bb7",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": true,
+            "PanelSize": "512,512",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "EnemyWorldHP",
+            "__guid": "ff3fe9d4-03ed-428c-b45d-2fc9432fba72",
+            "Uinfo": {
+              "_type": "component",
+              "component_id": "ef5a5816-bc1c-4c31-998a-ebc6330191ad",
+              "go": "5366122f-c2a2-448a-ae19-dc776c51cf76",
+              "component_type": "UnitInfo"
+            }
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "gkaf.rock_1"
+  ],
+  "__version": 1
+}

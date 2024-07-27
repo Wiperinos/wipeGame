@@ -1,0 +1,191 @@
+{
+  "RootObject": {
+    "__guid": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
+    "Flags": 0,
+    "Name": "player",
+    "Tags": "player",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Player",
+        "__guid": "e38c6173-468e-4c3c-a454-af16f12b6fcd",
+        "Animator": {
+          "_type": "component",
+          "component_id": "db3107b1-aaad-4279-96b0-c570d42d6eb8",
+          "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "Camera": {
+          "_type": "gameobject",
+          "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
+        },
+        "Controller": {
+          "_type": "component",
+          "component_id": "a87efa3e-b36b-4a1c-8c32-5e4a33e4b969",
+          "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
+          "component_type": "CharacterController"
+        },
+        "EyePosition": "0,0,62.8",
+        "JumpStrenght": 400,
+        "PunchCooldown": 0.5,
+        "PunchRange": 60,
+        "PunchSTR": 1,
+        "RunSpeed": 250,
+        "WalkSpeed": 120
+      },
+      {
+        "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+        "__guid": "db3107b1-aaad-4279-96b0-c570d42d6eb8",
+        "BodyWeight": 1,
+        "EyesWeight": 1,
+        "HeadWeight": 1,
+        "LookAtEnabled": false,
+        "Target": {
+          "_type": "component",
+          "component_id": "a93f2cb9-4f21-406b-a1ed-f5887eb76cfc",
+          "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "a93f2cb9-4f21-406b-a1ed-f5887eb76cfc",
+        "BodyGroups": 341,
+        "CreateBoneObjects": false,
+        "Model": "models/citizen/citizen.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Sandbox.CharacterController",
+        "__guid": "a87efa3e-b36b-4a1c-8c32-5e4a33e4b969",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "",
+        "Radius": 16,
+        "StepHeight": 18,
+        "UseCollisionRules": false
+      },
+      {
+        "__type": "UnitInfo",
+        "__guid": "fd3e235c-360d-4581-aebd-5155f1271ef9",
+        "HealthRegenAmount": 0.5,
+        "HealthRegenTimer": 0,
+        "MaxHealth": 5,
+        "Team": "Player"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+        "Flags": 0,
+        "Name": "Camera",
+        "Position": "-101.6452,-27.38341,54.12285",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 60,
+            "IsMainCamera": true,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          },
+          {
+            "__type": "Sandbox.Bloom",
+            "__guid": "d73ef723-c888-41d4-802e-f797c79318be",
+            "BloomColor": {
+              "color": [
+                {
+                  "c": "1,1,1,1"
+                },
+                {
+                  "t": 1,
+                  "c": "1,1,1,1"
+                }
+              ],
+              "alpha": []
+            },
+            "BloomCurve": [
+              {
+                "y": 0.5
+              },
+              {
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "Mode": "Additive",
+            "Strength": 0.5,
+            "Threshold": 0.5,
+            "ThresholdWidth": 0.5
+          },
+          {
+            "__type": "Sandbox.Tonemapping",
+            "__guid": "9d76f362-7227-40eb-a189-69353c780c46",
+            "__version": 1,
+            "ExposureBias": 2,
+            "ExposureCompensation": 0,
+            "ExposureMethod": "RGB",
+            "MaximumExposure": 2,
+            "MinimumExposure": 1,
+            "Mode": "Legacy",
+            "Rate": 1
+          },
+          {
+            "__type": "Sandbox.Sharpen",
+            "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
+            "Scale": 0.2
+          }
+        ]
+      },
+      {
+        "__guid": "7982d42b-a725-4586-9cd2-6148f4d25b09",
+        "Flags": 0,
+        "Name": "Screen",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "1e4ed476-f5d9-4522-945c-301698798b8f",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 100
+          },
+          {
+            "__type": "PlayerHud",
+            "__guid": "3dfd4527-341b-4655-b946-e3c9ed573605",
+            "Uinfo": {
+              "_type": "component",
+              "component_id": "fd3e235c-360d-4581-aebd-5155f1271ef9",
+              "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
+              "component_type": "UnitInfo"
+            }
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "wiperinos.player"
+  ],
+  "__version": 1
+}

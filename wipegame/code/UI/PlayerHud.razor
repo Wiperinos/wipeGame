@@ -1,0 +1,22 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="hp">
+		<p> Speed: @Pleyer.Controller</p>
+	</div>
+</root>
+
+@code
+{
+	[Property] UnitInfo Uinfo {get; set;}
+
+	[Property] Player Pleyer { get; set;}
+
+
+	protected override int BuildHash()
+	{
+	 return System.HashCode.Combine( "" );
+	} 
+}
