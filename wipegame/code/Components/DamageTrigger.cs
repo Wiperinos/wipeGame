@@ -1,20 +1,20 @@
 using Sandbox;
+using Sandbox.Citizen;
 
-public sealed class HealTrigger : Component, Component.ITriggerListener
+public sealed class DamageTrigger : Component, Component.ITriggerListener
 {
 	[Property] float Amount { get; set; } = 10f;
-	[Property] TimeSince Rate { get; set; } = 1f;
+
 
 	public void OnTriggerEnter (Collider other )
 	{
-		var player = other.Components.Get<Player>();
+		/*var player = other.Components.Get<Player>();
 		var UnitInfo = other.Components.Get<UnitInfo>();
 		if ( player != null ) 
 		{
-			UnitInfo.Damage( -Amount );
-			
+			UnitInfo.Damage( Amount );
 		}
-
+		*/
 		Log.Info( other );
 	}
 	

@@ -14,40 +14,16 @@
         "GroundAngle": 45,
         "Height": 64,
         "IgnoreLayers": "player,trigger",
-        "Radius": 16,
+        "Radius": 14,
         "StepHeight": 18,
         "UseCollisionRules": false
-      },
-      {
-        "__type": "Sandbox.Citizen.CitizenAnimationHelper",
-        "__guid": "db3107b1-aaad-4279-96b0-c570d42d6eb8",
-        "BodyWeight": 1,
-        "EyesWeight": 1,
-        "HeadWeight": 1,
-        "LookAtEnabled": false,
-        "Target": {
-          "_type": "component",
-          "component_id": "a93f2cb9-4f21-406b-a1ed-f5887eb76cfc",
-          "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
-          "component_type": "SkinnedModelRenderer"
-        }
-      },
-      {
-        "__type": "Sandbox.SkinnedModelRenderer",
-        "__guid": "a93f2cb9-4f21-406b-a1ed-f5887eb76cfc",
-        "BodyGroups": 341,
-        "CreateBoneObjects": false,
-        "Model": "models/citizen/citizen.vmdl",
-        "RenderType": "On",
-        "Tint": "1,1,1,1",
-        "UseAnimGraph": true
       },
       {
         "__type": "Player",
         "__guid": "e38c6173-468e-4c3c-a454-af16f12b6fcd",
         "Animator": {
           "_type": "component",
-          "component_id": "db3107b1-aaad-4279-96b0-c570d42d6eb8",
+          "component_id": "fe25cba1-9a68-4bc3-b491-4c8bfb5b0786",
           "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
           "component_type": "CitizenAnimationHelper"
         },
@@ -78,8 +54,26 @@
         "Team": "Player"
       },
       {
+        "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+        "__guid": "fe25cba1-9a68-4bc3-b491-4c8bfb5b0786",
+        "BodyWeight": 1,
+        "EyeSource": {
+          "_type": "gameobject",
+          "go": "b19870ec-58e1-4479-bf53-421670a14312"
+        },
+        "EyesWeight": 1,
+        "HeadWeight": 1,
+        "LookAtEnabled": false,
+        "Target": {
+          "_type": "component",
+          "component_id": "b35547b7-5b44-4fd1-9391-572030d63d6c",
+          "go": "fc995fc7-d25b-4980-a1a9-d37127e05957",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
         "__type": "Sandbox.ModelCollider",
-        "__guid": "5412f60f-aaaf-4257-8f4d-e4024a8a2608",
+        "__guid": "cd11a988-f91c-4c4f-bca8-e8aa6d5733ea",
         "IsTrigger": false,
         "Model": "models/citizen/citizen.vmdl",
         "Static": false
@@ -183,6 +177,35 @@
             }
           }
         ]
+      },
+      {
+        "__guid": "fc995fc7-d25b-4980-a1a9-d37127e05957",
+        "Flags": 0,
+        "Name": "Body",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "b35547b7-5b44-4fd1-9391-572030d63d6c",
+            "BodyGroups": 341,
+            "CreateBoneObjects": false,
+            "Model": "models/citizen/citizen.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "Clothing",
+            "__guid": "c01622cc-d524-478b-b53c-beb7947ceefc"
+          }
+        ]
+      },
+      {
+        "__guid": "b19870ec-58e1-4479-bf53-421670a14312",
+        "Flags": 0,
+        "Name": "Head",
+        "Position": "0,0,63.27732",
+        "Enabled": true
       }
     ],
     "__variables": []

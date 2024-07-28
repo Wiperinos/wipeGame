@@ -344,7 +344,7 @@
       "__guid": "cb4f9098-6373-4e2f-bc75-ff08e6949fb3",
       "Flags": 0,
       "Name": "enemy",
-      "Position": "18.68661,-141.1434,38",
+      "Position": "18.68661,-128.6813,38",
       "Enabled": true,
       "__Prefab": "prefab/enemy.prefab",
       "__PrefabVariables": {}
@@ -353,7 +353,7 @@
       "__guid": "35f34360-cf21-441f-b07d-bdadf55a8333",
       "Flags": 0,
       "Name": "HealCube",
-      "Position": "13.65117,2.561356,39.89797",
+      "Position": "13.65117,11.66003,39.89797",
       "Tags": "trigger",
       "Enabled": true,
       "Components": [
@@ -374,12 +374,9 @@
           "Static": false
         },
         {
-          "__type": "HealTrigger",
-          "__guid": "dbc1f823-ec9d-4e96-8fe2-b867ad1c6806",
-          "Amount": 1,
-          "Rate": {
-            "Relative": 3662.4468
-          }
+          "__type": "DamageTrigger",
+          "__guid": "8659dcdf-ce30-40c0-8d0d-7d51196ab69c",
+          "Amount": -1
         }
       ]
     },
@@ -408,12 +405,136 @@
           "Static": false
         },
         {
-          "__type": "HealTrigger",
-          "__guid": "98ac6244-bb84-4f96-b288-103ab66c1d8f",
-          "Amount": -1,
-          "Rate": {
-            "Relative": 3662.4468
-          }
+          "__type": "DamageTrigger",
+          "__guid": "db493c21-dd5a-4e42-927a-15debf76451d",
+          "Amount": 1
+        }
+      ]
+    },
+    {
+      "__guid": "19b3a7df-df8a-48d5-886a-929c171ee703",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "251.3625,-47.91689,64.00002",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "263e1ff8-1261-4a7d-bf8f-0a525ced4007",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-44.70795,-44.0419,64",
+              "44.70795,-44.0419,64",
+              "44.70795,44.0419,64",
+              "-44.70795,44.0419,64",
+              "-44.70795,44.0419,-15.13441",
+              "44.70795,44.0419,-15.13441",
+              "44.70795,-44.0419,-15.13441",
+              "-44.70795,-44.0419,-15.13441"
+            ],
+            "TextureCoord": [
+              "2.349281,1.344077",
+              "1.650719,-0.5",
+              "2.349281,0.6559227",
+              "-0.3440774,-0.5",
+              "1.650719,0.6559227",
+              "-1.349281,-0.5",
+              "1.650719,1.344077",
+              "0.6559227,-0.5",
+              "2.349281,0.6559227",
+              "-0.6507192,0.1182376",
+              "2.349281,1.344077",
+              "0.3440774,0.1182376",
+              "1.650719,1.344077",
+              "2.349281,0.1182376",
+              "1.650719,0.6559227",
+              "1.344077,0.1182376",
+              "1.344077,-0.5",
+              "1.650719,0.1182376",
+              "0.6559227,0.1182376",
+              "-0.6507192,-0.5",
+              "-0.3440774,0.1182376",
+              "2.349281,-0.5",
+              "0.3440774,-0.5",
+              "-1.349281,0.1182376"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,-0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "-0,0,-1",
+              "0,0,-1",
+              "-0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureOffset": [
+              "18.5498,320.3325",
+              "18.5498,320.3325",
+              "320.3325,256.0001",
+              "191.6676,256.0001",
+              "493.4502,256.0001",
+              "18.5498,256.0001"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": false
         }
       ]
     }

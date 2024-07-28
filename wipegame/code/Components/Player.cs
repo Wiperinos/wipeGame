@@ -26,7 +26,7 @@ public sealed class Player : Component
 	[Range( 0f, 400f, 1f )]
 	public float WalkSpeed { get; set; } = 120f;
 
-	
+
 	/// <summary>
 	/// Velocidad al Correr (units per second)
 	/// </summary>
@@ -50,7 +50,7 @@ public sealed class Player : Component
 	[Category( "Stats" )]
 	[Range( 0f, 5f, 0.1f )]
 	public float PunchSTR { get; set; } = 1f;
-	
+
 	/// <summary>
 	/// Cooldown por golpe
 	/// </summary>
@@ -77,11 +77,13 @@ public sealed class Player : Component
 	public Angles EyeAngles { get; set; }
 	Transform _initialCameraTransform;
 	TimeSince _lastPunch;
+	public bool IsRunning { get; set; }
+	public bool IsCrouched { get; set; }
 
 	protected override void DrawGizmos()
 	{
-		if (!Gizmo.IsSelected) return;
-		 
+		if ( !Gizmo.IsSelected ) return;
+
 		var draw = Gizmo.Draw;
 
 		draw.LineSphere( EyePosition, 10f );
@@ -106,6 +108,8 @@ public sealed class Player : Component
 			Camera.Transform.Position = cameraTrace.EndPosition;
 			Camera.Transform.LocalRotation = cameraTransform.Rotation;
 		}
+		UpdateCrouch();
+		UpdateAnimations();
 	}
 
 	protected override void OnFixedUpdate()
@@ -142,45 +146,22 @@ public sealed class Player : Component
 
 		if ( Animator != null )
 		{
-			Animator.IsGrounded = Controller.IsOnGround;
 			Animator.WithVelocity( Controller.Velocity );
 
 			if ( _lastPunch >= 2f )
 				Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
 		}
 		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
-			Punch(); 
+			Punch();
+
+		
 	}
 	protected override void OnStart()
 	{
 		if ( Camera != null )
 			_initialCameraTransform = Camera.Transform.Local;
-		if ( Components.TryGet<SkinnedModelRenderer>( out var model ) )
-		{
-			var clothing = ClothingContainer.CreateFromLocalUser();
-			clothing.Apply( model );
-		}
 	}
-	public void Punch()
-	{
-		if ( Animator != null )
-		{ 
-		Animator.HoldType = CitizenAnimationHelper.HoldTypes.Punch;
-		Animator.Target.Set( "b_attack", true );
-		}
-		var punchTrace = Scene.Trace
-			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * PunchRange )
-			.Size( 10f )
-			.WithoutTags( "player" )
-			.IgnoreGameObjectHierarchy( GameObject )
-			.Run();
-		if ( punchTrace.Hit )
-			if ( punchTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
-				unitInfo.Damage( PunchSTR );
-		
 
-		_lastPunch = 0f;
-	}
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
@@ -192,6 +173,47 @@ public sealed class Player : Component
 	protected override void OnDestroy()
 	{
 		base.OnDestroy();
+	}
+	public void Punch()
+	{
+		if ( Animator != null )
+		{
+			Animator.HoldType = CitizenAnimationHelper.HoldTypes.Punch;
+			Animator.Target.Set( "b_attack", true );
+		}
+		var punchTrace = Scene.Trace
+			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * PunchRange )
+			.Size( 10f )
+			.WithoutTags( "player" )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Run();
+		if ( punchTrace.Hit )
+			if ( punchTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
+				unitInfo.Damage( PunchSTR );
+
+
+		_lastPunch = 0f;
+	}
+	void UpdateCrouch()
+	{
+		if ( Controller is null ) return;
+
+		if ( Input.Pressed  ("Crouch") && !IsCrouched)
+		{
+			IsCrouched = true;
+			Controller.Height /= 2f;
+		}
+		if (  Input.Released ("Crouch") && IsCrouched)
+		{
+			IsCrouched = false;
+			Controller.Height *= 2f;
+		}
+	}
+	void UpdateAnimations()
+	{
+
+		Animator.DuckLevel = IsCrouched ? 1f : 0f;
+		Animator.IsGrounded = Controller.IsOnGround;
 	}
 
 }
