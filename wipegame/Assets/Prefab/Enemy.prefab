@@ -8,9 +8,9 @@
       {
         "__type": "UnitInfo",
         "__guid": "ef5a5816-bc1c-4c31-998a-ebc6330191ad",
-        "HealthRegenAmount": 0.3,
+        "HealthRegenAmount": 1,
         "HealthRegenTimer": 5,
-        "MaxHealth": 3,
+        "MaxHealth": 10,
         "Team": "Snot"
       },
       {

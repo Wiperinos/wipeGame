@@ -3,18 +3,24 @@
 @inherits PanelComponent
 
 <root>
-	<div class="HP">
-		<p> HP : @Uinfo.MaxHealth </p>
-	</div>
+		<div class="HP">
+			<p> HP : @(Uinfo.Health / Uinfo.MaxHealth * 100f)%  @Uinfo.Health </p>
+		</div>
+		<div class="HPBars">
+			<div class="HPBar">
+				<div class="HPBarInner">
+					<div class="fill" style="width: @(Uinfo.Health / Uinfo.MaxHealth * 100f)%" ></div>
+				</div>
+			</div>
+		</div>
+
 </root>
 
 @code
 {
-
 		[Property] UnitInfo Uinfo { get; set; }
-
 		protected override int BuildHash()
 		{
-			return System.HashCode.Combine("");
+			return System.HashCode.Combine(Uinfo.Health);
 		}
 	}

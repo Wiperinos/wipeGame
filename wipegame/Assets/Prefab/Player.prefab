@@ -7,31 +7,16 @@
     "Enabled": true,
     "Components": [
       {
-        "__type": "Player",
-        "__guid": "e38c6173-468e-4c3c-a454-af16f12b6fcd",
-        "Animator": {
-          "_type": "component",
-          "component_id": "db3107b1-aaad-4279-96b0-c570d42d6eb8",
-          "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
-          "component_type": "CitizenAnimationHelper"
-        },
-        "Camera": {
-          "_type": "gameobject",
-          "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
-        },
-        "Controller": {
-          "_type": "component",
-          "component_id": "a87efa3e-b36b-4a1c-8c32-5e4a33e4b969",
-          "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
-          "component_type": "CharacterController"
-        },
-        "EyePosition": "0,0,62.8",
-        "JumpStrenght": 400,
-        "PunchCooldown": 0.5,
-        "PunchRange": 60,
-        "PunchSTR": 1,
-        "RunSpeed": 250,
-        "WalkSpeed": 120
+        "__type": "Sandbox.CharacterController",
+        "__guid": "a87efa3e-b36b-4a1c-8c32-5e4a33e4b969",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "player,trigger",
+        "Radius": 16,
+        "StepHeight": 18,
+        "UseCollisionRules": false
       },
       {
         "__type": "Sandbox.Citizen.CitizenAnimationHelper",
@@ -58,24 +43,46 @@
         "UseAnimGraph": true
       },
       {
-        "__type": "Sandbox.CharacterController",
-        "__guid": "a87efa3e-b36b-4a1c-8c32-5e4a33e4b969",
-        "Acceleration": 10,
-        "Bounciness": 0.3,
-        "GroundAngle": 45,
-        "Height": 64,
-        "IgnoreLayers": "",
-        "Radius": 16,
-        "StepHeight": 18,
-        "UseCollisionRules": false
+        "__type": "Player",
+        "__guid": "e38c6173-468e-4c3c-a454-af16f12b6fcd",
+        "Animator": {
+          "_type": "component",
+          "component_id": "db3107b1-aaad-4279-96b0-c570d42d6eb8",
+          "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "Camera": {
+          "_type": "gameobject",
+          "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
+        },
+        "Controller": {
+          "_type": "component",
+          "component_id": "a87efa3e-b36b-4a1c-8c32-5e4a33e4b969",
+          "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
+          "component_type": "CharacterController"
+        },
+        "EyePosition": "0,0,62.60007",
+        "JumpStrenght": 400,
+        "PunchCooldown": 0.5,
+        "PunchRange": 60,
+        "PunchSTR": 1,
+        "RunSpeed": 250,
+        "WalkSpeed": 120
       },
       {
         "__type": "UnitInfo",
         "__guid": "fd3e235c-360d-4581-aebd-5155f1271ef9",
-        "HealthRegenAmount": 0.5,
+        "HealthRegenAmount": 0,
         "HealthRegenTimer": 0,
         "MaxHealth": 5,
         "Team": "Player"
+      },
+      {
+        "__type": "Sandbox.ModelCollider",
+        "__guid": "5412f60f-aaaf-4257-8f4d-e4024a8a2608",
+        "IsTrigger": false,
+        "Model": "models/citizen/citizen.vmdl",
+        "Static": false
       }
     ],
     "Children": [
@@ -184,8 +191,6 @@
   "MenuPath": null,
   "MenuIcon": null,
   "ResourceVersion": 1,
-  "__references": [
-    "wiperinos.player"
-  ],
+  "__references": [],
   "__version": 1
 }

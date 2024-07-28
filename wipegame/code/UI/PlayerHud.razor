@@ -3,8 +3,8 @@
 @inherits PanelComponent
 
 <root>
-	<div class="hp">
-		<p> Speed: @Pleyer.Controller</p>
+	<div class="HP">
+		<p>	@(Uinfo.Health / Uinfo.MaxHealth * 100f)% </p>
 	</div>
 </root>
 
@@ -12,11 +12,8 @@
 {
 	[Property] UnitInfo Uinfo {get; set;}
 
-	[Property] Player Pleyer { get; set;}
-
-
 	protected override int BuildHash()
 	{
-	 return System.HashCode.Combine( "" );
+		return System.HashCode.Combine(Uinfo.Health);
 	} 
 }
