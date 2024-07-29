@@ -7,18 +7,6 @@
     "Enabled": true,
     "Components": [
       {
-        "__type": "Sandbox.CharacterController",
-        "__guid": "a87efa3e-b36b-4a1c-8c32-5e4a33e4b969",
-        "Acceleration": 10,
-        "Bounciness": 0.3,
-        "GroundAngle": 45,
-        "Height": 64,
-        "IgnoreLayers": "player,trigger",
-        "Radius": 14,
-        "StepHeight": 18,
-        "UseCollisionRules": false
-      },
-      {
         "__type": "Player",
         "__guid": "e38c6173-468e-4c3c-a454-af16f12b6fcd",
         "Animator": {
@@ -33,7 +21,7 @@
         },
         "Controller": {
           "_type": "component",
-          "component_id": "a87efa3e-b36b-4a1c-8c32-5e4a33e4b969",
+          "component_id": "161fe2d7-a639-4516-aca1-658cdf540fd4",
           "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
           "component_type": "CharacterController"
         },
@@ -50,7 +38,7 @@
         "__guid": "fd3e235c-360d-4581-aebd-5155f1271ef9",
         "HealthRegenAmount": 0,
         "HealthRegenTimer": 0,
-        "MaxHealth": 5,
+        "MaxHealth": 100,
         "Team": "Player"
       },
       {
@@ -72,10 +60,24 @@
         }
       },
       {
-        "__type": "Sandbox.ModelCollider",
-        "__guid": "cd11a988-f91c-4c4f-bca8-e8aa6d5733ea",
+        "__type": "Sandbox.CharacterController",
+        "__guid": "161fe2d7-a639-4516-aca1-658cdf540fd4",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "player,trigger",
+        "Radius": 16,
+        "StepHeight": 18,
+        "UseCollisionRules": false
+      },
+      {
+        "__type": "Sandbox.CapsuleCollider",
+        "__guid": "b4b480b3-6bad-4d56-ae10-9ee143c5d90d",
+        "End": "0,0,58.69997",
         "IsTrigger": false,
-        "Model": "models/citizen/citizen.vmdl",
+        "Radius": 13,
+        "Start": "0,0,11.80001",
         "Static": false
       }
     ],

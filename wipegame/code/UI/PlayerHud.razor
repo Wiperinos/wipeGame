@@ -3,9 +3,13 @@
 @inherits PanelComponent
 
 <root>
-	<div class="HP">
-		<p>	@(Uinfo.Health / Uinfo.MaxHealth * 100f)% </p>
-		<p>@Uinfo.Health</p>
+	<div class="healthBars">
+		<div class="healthBar">
+			<div class="inner">
+				<div class="fill" style="width: @(Uinfo.Health / Uinfo.MaxHealth * 100f)%"></div>
+				<p>	@Uinfo.Health / @Uinfo.MaxHealth </p>
+			</div>
+		</div>
 	</div>
 </root>
 
@@ -18,3 +22,5 @@
 		return System.HashCode.Combine(Uinfo.Health);
 	} 
 }
+
+

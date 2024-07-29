@@ -25,7 +25,7 @@ public sealed class UnitInfo : Component
 	[Property]
 	public UnitType Team { get; set; }
 	[Property]
-	[Range( 0.1f, 10f, 0.1f )]
+	[Range( 1f, 100f, 1f )]
 	public float MaxHealth { get; set; } = 5f;
 	/// <summary>
 	/// HP Regen Fuera de combat
@@ -39,9 +39,9 @@ public sealed class UnitInfo : Component
 	/// </summary>
 	[Property]
 	[Range( 0f, 2f, 1f )]
-	public float HealthRegenTimer { get; private set; }
+	public float HealthRegenTimer { get; set; }
 
-	public float Health { get; private set; }
+	public float Health { get; set; }
 
 	public bool Alive { get; private set; } = true;
 
