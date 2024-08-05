@@ -20,18 +20,18 @@ EnemyWorldHP {
 
 			> .inner {
 				display: flex;
-				flex-direction: column;			
+				flex-direction: column;
 				background-color: black;
 				flex-grow: 1;
+
 				> .fill {
 					display: flex;
-					flex-direction: column;			
+					flex-direction: column;
 					align-items: center;
-
 					height: 100%;
 					background-color: red;
-
 				}
+
 				.fill .text {
 					position: absolute;
 					top: 8;
@@ -39,15 +39,15 @@ EnemyWorldHP {
 					width: 100%; /* Make the content take the full width */
 					height: 100%; /* Make the content take the full height */
 				}
-				 .text {				
+
+				.text {
 					position: absolute;
-					margin-top: 4px;					//transform: translate(-50%,-50%);
+					margin-top: 4px;
 					font-size: 20px;
 					align-content: center;
-					color: white ;
+					color: white;
 					text-stroke: 8px black;
 					white-space: nowrap; /* Prevent text from wrapping */
-
 				}
 			}
 		}

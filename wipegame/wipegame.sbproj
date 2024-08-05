@@ -87,14 +87,8 @@
         },
         {
           "Name": "reload",
-          "KeyboardCode": "r",
+          "KeyboardCode": "T",
           "GamepadCode": "X",
-          "GroupName": "Actions"
-        },
-        {
-          "Name": "use",
-          "KeyboardCode": "e",
-          "GamepadCode": "Y",
           "GroupName": "Actions"
         },
         {
@@ -210,6 +204,18 @@
           "KeyboardCode": "enter",
           "GamepadCode": "None",
           "GroupName": "Other"
+        },
+        {
+          "Name": "Grab",
+          "KeyboardCode": "E",
+          "GamepadCode": "None",
+          "GroupName": "Actions"
+        },
+        {
+          "Name": "Release",
+          "KeyboardCode": "R",
+          "GamepadCode": "None",
+          "GroupName": "Actions"
         }
       ],
       "__guid": "138a4068-b0e0-4b62-a2d1-72b2fc3f28c8"

@@ -25,10 +25,15 @@
           "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
           "component_type": "CharacterController"
         },
-        "EyePosition": "0,0,62.60007",
+        "EyePosition": "0,0,62",
+        "GrabRange": 50,
         "JumpStrenght": 400,
+        "objectGrabPointTransform": {
+          "_type": "gameobject",
+          "go": "ba05f034-9c2e-4e66-92cc-4155e1dfc245"
+        },
         "PunchCooldown": 0.5,
-        "PunchRange": 60,
+        "PunchRange": 50,
         "PunchSTR": 1,
         "RunSpeed": 250,
         "WalkSpeed": 120
@@ -151,6 +156,10 @@
             "__type": "Sandbox.Sharpen",
             "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
             "Scale": 0.2
+          },
+          {
+            "__type": "Sandbox.Highlight",
+            "__guid": "ae838e85-f4d9-4858-adc1-ff7d78bfae8b"
           }
         ]
       },
@@ -178,6 +187,27 @@
               "component_type": "UnitInfo"
             }
           }
+        ],
+        "Children": [
+          {
+            "__guid": "ba05f034-9c2e-4e66-92cc-4155e1dfc245",
+            "Flags": 0,
+            "Name": "ObjectGrabPoint",
+            "Position": "50,0,50",
+            "Enabled": true
+          },
+          {
+            "__guid": "8dfae2e7-ecac-417f-b817-870ab2bddb96",
+            "Flags": 0,
+            "Name": "Object",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "TraceCheck",
+                "__guid": "f7f4288e-3203-4597-96e2-502007652cc0"
+              }
+            ]
+          }
         ]
       },
       {
@@ -199,6 +229,14 @@
           {
             "__type": "Clothing",
             "__guid": "c01622cc-d524-478b-b53c-beb7947ceefc"
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "1b772766-9af7-4184-b157-73d78af18682",
+            "Flags": 0,
+            "Name": "Object",
+            "Enabled": true
           }
         ]
       },

@@ -1,3 +1,4 @@
+using System;
 using Sandbox;
 using Sandbox.Citizen;
 
@@ -16,6 +17,11 @@ public sealed class Player : Component
 	[Property]
 	[Category( "Components" )]
 	public CitizenAnimationHelper Animator { get; set; }
+
+	[Property]
+	[Category( "Components" )]
+	public GameObject objectGrabPointTransform { get; set; }
+
 
 
 	/// <summary>
@@ -65,6 +71,10 @@ public sealed class Player : Component
 	[Category( "Stats" )]
 	public float PunchRange { get; set; } = 50f;
 
+	[Property]
+	[Category( "Stats" )]
+	public float GrabRange { get; set; } = 50f;
+
 
 
 	/// <summary>
@@ -79,6 +89,12 @@ public sealed class Player : Component
 	TimeSince _lastPunch;
 	public bool IsRunning { get; set; }
 	public bool IsCrouched { get; set; }
+	public bool IsGrabbing { get; set; }
+
+	public ObjectGrabable GrabbedObject { get; set; }
+	public ObjectGrabable LastHighlited { get; set; }
+
+	
 
 	protected override void DrawGizmos()
 	{
@@ -110,6 +126,8 @@ public sealed class Player : Component
 		}
 		UpdateCrouch();
 		UpdateAnimations();
+		UpdateGrab();
+		HighlightTraceGrab();
 	}
 
 	protected override void OnFixedUpdate()
@@ -120,6 +138,9 @@ public sealed class Player : Component
 
 		var wishSpeed = Input.Down( "Run" ) ? RunSpeed : WalkSpeed;
 		var wishVelocity = Input.AnalogMove.Normal * wishSpeed * Transform.Rotation;
+
+
+
 
 		Controller.Accelerate( wishVelocity );
 
@@ -152,9 +173,10 @@ public sealed class Player : Component
 				Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
 		}
 		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
+		{
 			Punch();
-
 		
+		}
 	}
 	protected override void OnStart()
 	{
@@ -194,19 +216,62 @@ public sealed class Player : Component
 
 		_lastPunch = 0f;
 	}
+	public void Grab()
+	{
+		var grabTrace = Scene.Trace
+			.FromTo( EyePosition, EyeWorldPosition + EyeAngles.Forward * GrabRange )
+			.Size( 10f )
+			.WithTag( "grab" )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Run();
+		if (grabTrace.Hit )
+		{
+			if (grabTrace.GameObject.Components.TryGet<ObjectGrabable>(out var objectGrab))
+			{
+				//var objectGrabPosition = EyeWorldPosition + Camera.Transform.Rotation.Forward * 100f;
+				
+				objectGrab.GameObject.SetParent( this.objectGrabPointTransform, false );
+				objectGrab.Transform.Position = objectGrabPointTransform.Transform.Position;
+				//objectGrab.Transform.
+				GrabbedObject = objectGrab;
+				GrabbedObject.GameObject.Components.TryGet<Rigidbody>( out var ridbody );
+				ridbody.Gravity = false;
+				GrabbedObject.PaintColor();
+				GrabbedObject.isGrabbred = true;
+			}
+		}
+	}
+	public void UnGrab()
+	{
+		if (GrabbedObject != null )
+		{
+			GrabbedObject.GameObject.Components.TryGet<Rigidbody>( out var ridbody );
+			ridbody.Gravity = true;
+			GrabbedObject.GameObject.Parent = null;
+			GrabbedObject.Transform.Position = this.objectGrabPointTransform.Transform.Position;
+			GrabbedObject.isGrabbred = false;
+			GrabbedObject = null;
+
+		}
+	}
+
+
 	void UpdateCrouch()
 	{
 		if ( Controller is null ) return;
 
-		if ( Input.Pressed  ("Crouch") && !IsCrouched)
+		if ( Input.Pressed( "Crouch" ) && !IsCrouched )
 		{
 			IsCrouched = true;
 			Controller.Height /= 2f;
+			//objectGrabPointTransform.Transform.Position  2f;
+			
 		}
-		if (  Input.Released ("Crouch") && IsCrouched)
+		if ( Input.Released( "Crouch" ) && IsCrouched )
 		{
 			IsCrouched = false;
 			Controller.Height *= 2f;
+			//objectGrabPointTransform.Transform.Position *= 2f;
 		}
 	}
 	void UpdateAnimations()
@@ -214,6 +279,37 @@ public sealed class Player : Component
 
 		Animator.DuckLevel = IsCrouched ? 1f : 0f;
 		Animator.IsGrounded = Controller.IsOnGround;
+	}
+	void UpdateGrab()
+	{
+
+		if ( Input.Pressed( "Grab" ) && !IsGrabbing )
+		{
+			Grab();
+			IsGrabbing = true;
+
+		}
+		if ( Input.Released( "Grab" ) && IsGrabbing )
+		{
+			UnGrab();
+			IsGrabbing = false;
+		}
+	}
+	void HighlightTraceGrab()
+	{
+		var highlightTrace = Scene.Trace
+			.FromTo( EyePosition, EyeWorldPosition + EyeAngles.Forward * GrabRange )
+			.Size( 10f )
+			.WithTag( "grab" )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Run();
+		if ( highlightTrace.Hit )
+		{
+			if ( highlightTrace.GameObject.Components.TryGet<ObjectGrabable>( out var highlightoutLineR ) )
+			{
+				highlightoutLineR.PaintColor();
+			}
+		}
 	}
 
 }
