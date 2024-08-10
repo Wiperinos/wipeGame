@@ -1,0 +1,63 @@
+{
+  "RootObject": {
+    "__guid": "b7b9408a-1c63-4c6a-97c8-0164a482a426",
+    "Flags": 0,
+    "Name": "bullet",
+    "Scale": "0.1,0.1,0.1",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.SphereCollider",
+        "__guid": "4959e4ec-c667-4a37-b0ae-15f7b66e9659",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Radius": 10,
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "f4e7216a-f05e-4cde-b5a9-fefa290372f1",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Bullet",
+        "__guid": "8107b117-6a09-4c3b-b166-c06e8c992be5"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "7680ef65-8bbb-4ba1-86da-d49d2a1bec62",
+        "Flags": 0,
+        "Name": "Sphere",
+        "Scale": "0.5,0.5,0.5",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "eac7d747-0a57-4cc5-8efc-a85c4715e9bd",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/sphere.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

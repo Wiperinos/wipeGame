@@ -1,6 +1,7 @@
 using System;
 using Sandbox;
 using Sandbox.Citizen;
+using static Sandbox.VertexLayout;
 
 public sealed class Player : Component
 {
@@ -22,7 +23,13 @@ public sealed class Player : Component
 	[Category( "Components" )]
 	public GameObject objectGrabPointTransform { get; set; }
 
+	[Property]
+	[Category( "Components" )]
+	public WeaponManager weaponManager { get; set; }
 
+	[Property]
+	[Category( "Components" )]
+	public GameObject weaponPosition { get; set; }
 
 	/// <summary>
 	/// Velocidad al Caminar (units per second)
@@ -84,6 +91,8 @@ public sealed class Player : Component
 	public Vector3 EyePosition { get; set; }
 	public Vector3 EyeWorldPosition => Transform.Local.PointToWorld( EyePosition );
 
+
+
 	public Angles EyeAngles { get; set; }
 	Transform _initialCameraTransform;
 	TimeSince _lastPunch;
@@ -94,7 +103,10 @@ public sealed class Player : Component
 	public ObjectGrabable GrabbedObject { get; set; }
 	public ObjectGrabable LastHighlited { get; set; }
 
-	
+
+
+
+
 
 	protected override void DrawGizmos()
 	{
@@ -103,8 +115,12 @@ public sealed class Player : Component
 		var draw = Gizmo.Draw;
 
 		draw.LineSphere( EyePosition, 10f );
-		draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 5f, 10 );
+		// rango del golpe
+		// draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 5f, 10 ); 
 
+		// rango del grab
+		draw.LineCylinder( EyePosition, EyePosition + EyeAngles.Forward * GrabRange, 5f, 5f, 10 );
+		
 	}
 
 	protected override void OnUpdate()
@@ -128,6 +144,7 @@ public sealed class Player : Component
 		UpdateAnimations();
 		UpdateGrab();
 		HighlightTraceGrab();
+
 	}
 
 	protected override void OnFixedUpdate()
@@ -175,7 +192,7 @@ public sealed class Player : Component
 		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
 		{
 			Punch();
-		
+
 		}
 	}
 	protected override void OnStart()
@@ -219,17 +236,17 @@ public sealed class Player : Component
 	public void Grab()
 	{
 		var grabTrace = Scene.Trace
-			.FromTo( EyePosition, EyeWorldPosition + EyeAngles.Forward * GrabRange )
+			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * GrabRange )
 			.Size( 10f )
 			.WithTag( "grab" )
 			.IgnoreGameObjectHierarchy( GameObject )
 			.Run();
-		if (grabTrace.Hit )
+		if ( grabTrace.Hit )
 		{
-			if (grabTrace.GameObject.Components.TryGet<ObjectGrabable>(out var objectGrab))
+			if ( grabTrace.GameObject.Components.TryGet<ObjectGrabable>( out var objectGrab ) )
 			{
 				//var objectGrabPosition = EyeWorldPosition + Camera.Transform.Rotation.Forward * 100f;
-				
+
 				objectGrab.GameObject.SetParent( this.objectGrabPointTransform, false );
 				objectGrab.Transform.Position = objectGrabPointTransform.Transform.Position;
 				//objectGrab.Transform.
@@ -243,7 +260,7 @@ public sealed class Player : Component
 	}
 	public void UnGrab()
 	{
-		if (GrabbedObject != null )
+		if ( GrabbedObject != null )
 		{
 			GrabbedObject.GameObject.Components.TryGet<Rigidbody>( out var ridbody );
 			ridbody.Gravity = true;
@@ -264,19 +281,23 @@ public sealed class Player : Component
 		{
 			IsCrouched = true;
 			Controller.Height /= 2f;
+
+			EyePosition = new Vector3  (EyePosition.x , EyePosition.y , (EyePosition.z/2)) ;
+			Log.Info( Camera.Transform.Local.Position );
+			//Camera.Transform.Local.Position = new Vector3( Camera.Transform.Local.Position.x, Camera.Transform.Local.Position.y, (Camera.Transform.Local.Position.z / 2) );
 			//objectGrabPointTransform.Transform.Position  2f;
-			
+
 		}
 		if ( Input.Released( "Crouch" ) && IsCrouched )
 		{
 			IsCrouched = false;
 			Controller.Height *= 2f;
-			//objectGrabPointTransform.Transform.Position *= 2f;
+			EyePosition = new Vector3( EyePosition.x, EyePosition.y, (EyePosition.z * 2) );
 		}
 	}
 	void UpdateAnimations()
 	{
-
+		
 		Animator.DuckLevel = IsCrouched ? 1f : 0f;
 		Animator.IsGrounded = Controller.IsOnGround;
 	}
@@ -298,9 +319,9 @@ public sealed class Player : Component
 	void HighlightTraceGrab()
 	{
 		var highlightTrace = Scene.Trace
-			.FromTo( EyePosition, EyeWorldPosition + EyeAngles.Forward * GrabRange )
+			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * GrabRange )
 			.Size( 10f )
-			.WithTag( "grab" )
+			.WithTag( "highlight" )
 			.IgnoreGameObjectHierarchy( GameObject )
 			.Run();
 		if ( highlightTrace.Hit )

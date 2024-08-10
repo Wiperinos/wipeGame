@@ -16,7 +16,7 @@ public enum UnitType
 	/// Enemies
 	/// </summary>
 	[Icon( "cloud_queue" )]
-	Snot
+	Enemy
 }
 [Icon( "psychology" )]
 

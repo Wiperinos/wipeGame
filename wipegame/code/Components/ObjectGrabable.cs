@@ -1,4 +1,5 @@
 using Sandbox;
+using System.Threading.Tasks;
 
 public sealed class ObjectGrabable : Component
 {
@@ -10,10 +11,8 @@ public sealed class ObjectGrabable : Component
 
 	protected override async void OnUpdate()
 	{
-		if (LastPaint > 0.1 && !isGrabbred )
-		{
-			ResetColor();
-		}
+		await ColorCheck();
+		
 	}
 	public void ResetColor()
 	{
@@ -28,5 +27,17 @@ public sealed class ObjectGrabable : Component
 		HLOutline.Color = "#2E00FF";
 		LastPaint = 0;
 	}
-
+	public void PaintColorWeapon()
+	{
+		HLOutline.Color = "#00FF0B";
+		LastPaint = 0;
+	}
+	public async Task ColorCheck()
+	{
+		if ( (LastPaint > 0.1) && !isGrabbred )
+		{
+			await Task.Frame();
+			ResetColor();
+		}
+	}
 }
