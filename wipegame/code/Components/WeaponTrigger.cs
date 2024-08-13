@@ -22,5 +22,5 @@ public sealed class WeaponTrigger : Component, Component.ITriggerListener
 		}
 		else return;
 	}
-
+	
 }

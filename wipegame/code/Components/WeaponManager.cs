@@ -21,9 +21,11 @@ public sealed class WeaponManager : Component
 
 
 	public string _weaponName;
+
+
 	protected override void OnUpdate()
 	{
-
+		Gizmo.Draw.LineSphere( bulletSpawnPoint.Transform.Position, 2f );
 		WeaponAttack();
 		drawGizmo();
 	}
@@ -56,7 +58,19 @@ public sealed class WeaponManager : Component
 				{
 					objBullet.Components.TryGet<Bullet>( out var bulletoo );
 					bulletoo.bulletDamage = weaponDamage;
-					physics.Velocity = player.EyeAngles.Forward * weaponSpeed;//bulletSpawnPoint.Transform.Rotation.Forward * weaponSpeed;
+					var dir = player.CameraForward;
+					var pos = player.CameraPosition;
+					var tr = Scene.Trace
+					.FromTo( pos, pos + (dir * 10000) )
+					.WithTag( "" )
+					.IgnoreGameObjectHierarchy( GameObject )
+					.Run();
+					if ( tr.Hit )
+					{
+						Gizmo.Draw.Line( bulletSpawnPoint.Transform.Position, tr.HitPosition );
+						physics.Velocity = dir *500;
+						Log.Info( tr.Direction );
+					}
 				}
 
 			}
@@ -70,14 +84,14 @@ public sealed class WeaponManager : Component
 		if ( player == null ) { return; }
 		if ( player != null )
 		{
+			var dir = player.Camera.Transform.Rotation.Forward;
 			var draw = Gizmo.Draw;
-			draw.LineCylinder( bulletSpawnPoint.Transform.Position, bulletSpawnPoint.Transform.Position + player.EyeAngles.Forward * 50, 5f, 5f, 10 );
-
+			draw.LineCylinder( bulletSpawnPoint.Transform.Position, bulletSpawnPoint.Transform.Position + ( dir * 50), 5f, 5f, 10 );		
 		}
 		//player.EyeAngles.Forward * 10, 5f, 5f, 10 );
 		//Log.Info( player.EyeAngles.Forward.ToString() );
-		
-		
+
+		//bulletSpawnPoint.Transform.Position
 	}
 
 }

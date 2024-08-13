@@ -26,7 +26,7 @@
           "component_type": "CharacterController"
         },
         "EyePosition": "0,0,62",
-        "GrabRange": 65,
+        "GrabRange": 109.99994,
         "JumpStrenght": 400,
         "objectGrabPointTransform": {
           "_type": "gameobject",
@@ -36,6 +36,10 @@
         "PunchRange": 50,
         "PunchSTR": 1,
         "RunSpeed": 250,
+        "TestModel": {
+          "_type": "gameobject",
+          "go": "95cf329f-1e8e-4fc7-b4b5-d90eea75c00e"
+        },
         "WalkSpeed": 120,
         "weaponPosition": {
           "_type": "gameobject",
@@ -95,7 +99,7 @@
         "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
         "Flags": 0,
         "Name": "Camera",
-        "Position": "-97.51195,-15.88339,61.86874",
+        "Position": "-70.32469,-23.37944,57.14392",
         "Enabled": true,
         "Components": [
           {
@@ -103,7 +107,7 @@
             "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
             "BackgroundColor": "0.33333,0.46275,0.52157,1",
             "ClearFlags": "All",
-            "FieldOfView": 60,
+            "FieldOfView": 80,
             "IsMainCamera": true,
             "Orthographic": false,
             "OrthographicHeight": 1204,
@@ -190,6 +194,10 @@
               "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
               "component_type": "UnitInfo"
             }
+          },
+          {
+            "__type": "Crosshair",
+            "__guid": "82c960d5-5eab-45ba-a56b-de70273e6b73"
           }
         ],
         "Children": [
@@ -228,7 +236,7 @@
             "__guid": "1b772766-9af7-4184-b157-73d78af18682",
             "Flags": 0,
             "Name": "Gun",
-            "Position": "16.85438,-30.13886,62.53469",
+            "Position": "10.74418,-14.30585,42.68061",
             "Enabled": true
           }
         ]
@@ -239,6 +247,24 @@
         "Name": "Head",
         "Position": "0,0,63.27732",
         "Enabled": true
+      },
+      {
+        "__guid": "95cf329f-1e8e-4fc7-b4b5-d90eea75c00e",
+        "Flags": 0,
+        "Name": "Sphere",
+        "Position": "38.1372,-34.56471,18.1297",
+        "Scale": "0.1,0.1,0.1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "d2d2b6b3-d9c9-45a8-8f2c-a485298e9014",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/sphere.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
       }
     ],
     "__variables": []

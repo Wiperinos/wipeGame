@@ -9,6 +9,9 @@ public sealed class Player : Component
 	[Category( "Components" )]
 	public GameObject Camera { get; set; }
 
+	[Property]
+	[Category( "Components" )]
+	public GameObject TestModel { get; set; }
 
 	[Property]
 	[Category( "Components" )]
@@ -38,8 +41,6 @@ public sealed class Player : Component
 	[Category( "Stats" )]
 	[Range( 0f, 400f, 1f )]
 	public float WalkSpeed { get; set; } = 120f;
-
-
 	/// <summary>
 	/// Velocidad al Correr (units per second)
 	/// </summary>
@@ -47,8 +48,6 @@ public sealed class Player : Component
 	[Category( "Stats" )]
 	[Range( 0f, 800f, 1f )]
 	public float RunSpeed { get; set; } = 250f;
-
-
 	/// <summary>
 	/// Fuerza del salto (units per second)
 	/// </summary>
@@ -63,50 +62,38 @@ public sealed class Player : Component
 	[Category( "Stats" )]
 	[Range( 0f, 5f, 0.1f )]
 	public float PunchSTR { get; set; } = 1f;
-
 	/// <summary>
 	/// Cooldown por golpe
 	/// </summary>
 	[Property]
 	[Category( "Stats" )]
 	public float PunchCooldown { get; set; } = 0.5f;
-
 	/// <summary>
 	/// Rango del golpe
 	/// </summary>
 	[Property]
 	[Category( "Stats" )]
 	public float PunchRange { get; set; } = 50f;
-
 	[Property]
 	[Category( "Stats" )]
 	public float GrabRange { get; set; } = 50f;
-
-
-
 	/// <summary>
 	/// Where the camera rotates around and the aim originates from
 	/// </summary>
 	[Property]
 	public Vector3 EyePosition { get; set; }
 	public Vector3 EyeWorldPosition => Transform.Local.PointToWorld( EyePosition );
-
-
-
 	public Angles EyeAngles { get; set; }
 	Transform _initialCameraTransform;
 	TimeSince _lastPunch;
 	public bool IsRunning { get; set; }
 	public bool IsCrouched { get; set; }
 	public bool IsGrabbing { get; set; }
-
 	public ObjectGrabable GrabbedObject { get; set; }
 	public ObjectGrabable LastHighlited { get; set; }
-
-
-
-
-
+	public Vector3 CameraForward => Camera.Transform.Rotation.Forward;
+	public Vector3 CameraPosition => Camera.Transform.Position;
+	public float maxDist = 10000;
 
 	protected override void DrawGizmos()
 	{
@@ -119,10 +106,11 @@ public sealed class Player : Component
 		// draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 5f, 10 ); 
 
 		// rango del grab
-		draw.LineCylinder( EyePosition, EyePosition + EyeAngles.Forward * GrabRange, 5f, 5f, 10 );
-		
-	}
+		draw.LineCylinder( EyeWorldPosition,  CameraPosition + CameraForward * GrabRange, 5f, 5f, 10 );
 
+
+
+	}
 	protected override void OnUpdate()
 	{
 		EyeAngles += Input.AnalogLook;
@@ -144,9 +132,8 @@ public sealed class Player : Component
 		UpdateAnimations();
 		UpdateGrab();
 		HighlightTraceGrab();
-
+		CameraCenterTest();
 	}
-
 	protected override void OnFixedUpdate()
 	{
 		base.OnFixedUpdate();
@@ -200,7 +187,6 @@ public sealed class Player : Component
 		if ( Camera != null )
 			_initialCameraTransform = Camera.Transform.Local;
 	}
-
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
@@ -236,7 +222,7 @@ public sealed class Player : Component
 	public void Grab()
 	{
 		var grabTrace = Scene.Trace
-			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * GrabRange )
+			.FromTo( CameraPosition, EyeWorldPosition + (CameraForward) * GrabRange )
 			.Size( 10f )
 			.WithTag( "grab" )
 			.IgnoreGameObjectHierarchy( GameObject )
@@ -255,6 +241,7 @@ public sealed class Player : Component
 				ridbody.Gravity = false;
 				GrabbedObject.PaintColor();
 				GrabbedObject.isGrabbred = true;
+				
 			}
 		}
 	}
@@ -271,8 +258,6 @@ public sealed class Player : Component
 
 		}
 	}
-
-
 	void UpdateCrouch()
 	{
 		if ( Controller is null ) return;
@@ -319,17 +304,31 @@ public sealed class Player : Component
 	void HighlightTraceGrab()
 	{
 		var highlightTrace = Scene.Trace
-			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * GrabRange )
-			.Size( 10f )
+			.FromTo( CameraPosition, EyeWorldPosition + (CameraForward * GrabRange) )
+			.Size( 1f )
 			.WithTag( "highlight" )
 			.IgnoreGameObjectHierarchy( GameObject )
 			.Run();
 		if ( highlightTrace.Hit )
 		{
+			Gizmo.Draw.Line( EyeWorldPosition, highlightTrace.HitPosition );
 			if ( highlightTrace.GameObject.Components.TryGet<ObjectGrabable>( out var highlightoutLineR ) )
 			{
 				highlightoutLineR.PaintColor();
 			}
+		}
+	}
+	private void CameraCenterTest()
+	{
+		var tr = Scene.Trace
+			.FromTo( CameraPosition, CameraPosition + (CameraForward * maxDist) )
+			.WithTag( "" )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Run();
+		if ( tr.Hit )
+		{
+			//Gizmo.Draw.Line( EyeWorldPosition, tr.HitPosition );
+			//TestModel.Transform.Position = tr.HitPosition;
 		}
 	}
 

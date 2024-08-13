@@ -1,0 +1,95 @@
+{
+  "RootObject": {
+    "__guid": "037c8f1a-5e76-465c-acf5-b776dc3c1338",
+    "Flags": 0,
+    "Name": "weapon",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "e5c43d17-0779-4da4-a816-bf148555cdc7",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/dev/box.vmdl",
+        "RenderType": "On",
+        "Tint": "0.20084,0.74723,0.9814,0.48"
+      },
+      {
+        "__type": "WeaponManager",
+        "__guid": "6df0a7d0-60dd-46a0-a760-743c7af7914a",
+        "bulletPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefab/bullet.prefab"
+        },
+        "bulletSpawnPoint": {
+          "_type": "gameobject",
+          "go": "04082afb-f62d-4115-a701-50fdb20e82e7"
+        },
+        "weaponDamage": 1,
+        "weaponSpeed": 1000
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "9a9d2087-5965-4b94-ad3d-3189aaabbee9",
+        "Flags": 0,
+        "Name": "WeaponTrigger",
+        "Scale": "2,2,2",
+        "Tags": "trigger",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "a8948d9c-ffb4-44cd-ba71-25cd33bfa108",
+            "Center": "0,0,0",
+            "IsTrigger": true,
+            "Scale": "50,50,50",
+            "Static": false
+          },
+          {
+            "__type": "WeaponTrigger",
+            "__guid": "f56b320c-d669-4d6e-80b2-6774308d754c",
+            "Manager": {
+              "_type": "component",
+              "component_id": "6df0a7d0-60dd-46a0-a760-743c7af7914a",
+              "go": "037c8f1a-5e76-465c-acf5-b776dc3c1338",
+              "component_type": "WeaponManager"
+            },
+            "weaponType": "Box"
+          }
+        ]
+      },
+      {
+        "__guid": "04082afb-f62d-4115-a701-50fdb20e82e7",
+        "Flags": 0,
+        "Name": "BulletSpawn",
+        "Position": "47.46452,0,0",
+        "Enabled": true
+      },
+      {
+        "__guid": "76ec631f-2bae-4ac4-8005-1ac21986487a",
+        "Flags": 0,
+        "Name": "Cube",
+        "Position": "30.06505,0,0",
+        "Scale": "0.2,0.2,0.2",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "7b8e227c-d0dc-4ea5-92f0-761039b2f7b4",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/box.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
