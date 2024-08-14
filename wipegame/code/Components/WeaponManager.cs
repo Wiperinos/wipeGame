@@ -52,31 +52,29 @@ public sealed class WeaponManager : Component
 		{
 			if ( Input.Down( "Fire2" ) )
 			{
-				var objBullet = bulletPrefab.Clone( bulletSpawnPoint.Transform.Position, bulletSpawnPoint.Transform.Rotation );
-				var physics = objBullet.Components.Get<Rigidbody>( FindMode.EnabledInSelfAndDescendants );
-				if ( physics != null )
-				{
-					objBullet.Components.TryGet<Bullet>( out var bulletoo );
-					bulletoo.bulletDamage = weaponDamage;
-					var dir = player.CameraForward;
-					var pos = player.CameraPosition;
-					var tr = Scene.Trace
-					.FromTo( pos, pos + (dir * 10000) )
-					.WithTag( "" )
-					.IgnoreGameObjectHierarchy( GameObject )
-					.Run();
+				var dir = player.CameraForward;
+				var pos = player.CameraPosition;
+				var tr = Scene.Trace
+				.FromTo( pos, pos + (dir * 10000) )
+				.WithTag( "" )
+				.IgnoreGameObjectHierarchy( GameObject )
+				.Run();
 					if ( tr.Hit )
 					{
+					var objBullet = bulletPrefab.Clone( bulletSpawnPoint.Transform.Position, bulletSpawnPoint.Transform.Rotation );
+					var physics = objBullet.Components.Get<Rigidbody>( FindMode.EnabledInSelfAndDescendants );
+					if ( physics != null )
+						{
+						objBullet.Components.TryGet<Bullet>( out var bulletoo );
+						bulletoo.bulletDamage = weaponDamage;
 						Gizmo.Draw.Line( bulletSpawnPoint.Transform.Position, tr.HitPosition );
-						physics.Velocity = dir *500;
-						Log.Info( tr.Direction );
+						bulletSpawnPoint.Transform.Rotation =  Rotation.LookAt( tr.HitPosition - bulletSpawnPoint.Transform.Position ); 
+						physics.Velocity = bulletSpawnPoint.Transform.Rotation.Forward * 250;
+						//Log.Info( tr.Direction );
+						}
 					}
-				}
-
 			}
 		}
-
-
 	}
 
 	public void drawGizmo()
