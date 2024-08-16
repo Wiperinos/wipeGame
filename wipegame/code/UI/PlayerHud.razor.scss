@@ -5,31 +5,126 @@ PlayerHud {
 	right: 0px;
 	bottom: 0px;
 
-
-	> .healthBars {
+	> .bottomBar {
+		bottom: 0px;
 		position: absolute;
-		bottom: 30px;
-		left: 30px;
+		width: 100%;
+		height: 400px;
+		//background-color: chartreuse;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
 
-		> .healthBar {
-			display: flex;
-			width: 450px;
-			height: 100px;
-			background-color: dimgrey;
-			padding: 8px;
 
-			> .inner {
-				display: flex;
-				flex-direction: column;
-				background-color: black;
-				flex-grow: 1;
+		> .healthBars {
+			width: 350px;
+			height: 100%;
+			flex-shrink: 0;
+			align-items: flex-end;
 
-				> .fill {
-					display: flex;
-					flex-direction: column;
-					align-items: center;
+			> .healthBar {
+				height: 100px;
+				width: 100%;
+				background-color: #a7a7a7;
+				padding: 8px;
+				border-radius: 16px;
+
+
+
+				> .inner {
 					height: 100%;
-					background-color: red;
+					width: 100%;
+					background-color: #555;
+					border-radius: 16px;
+
+					> .fill {
+						height: 100%;
+						width: 100%;
+						background-color: red;
+						border-radius: 16px;
+					}
+
+					> p {
+						position: absolute;
+						font-size: 25px;
+						font-weight: bold;
+						color: white;
+					}
+				}
+			}
+		}
+
+		> .hotBar {
+			width: 50px;
+			z-index: 1;
+			gap: 8px;
+			justify-content: center;
+			align-items: flex-end;
+			flex-grow: 1;
+
+			> .slot {
+				display: flex;
+				width: 96px;
+				height: 96px;
+				background-color: #333;
+				border-radius: 16px;
+				transition: all 0.2s ease;
+
+				&.active {
+					background-color: brown;
+					width: 128px;
+					height: 128px;
+				}
+
+				> .numPad {
+					color: gold;
+					font-size: 32px;
+					align-self: flex-start;
+				}
+
+				> .itemHotbar 
+				{
+					color:lime;
+					align-self:center;
+				}
+				> p {
+					
+					font-size: 25px;
+					font-weight: bold;
+					color: white;
+				}
+			}
+		}
+
+		> .itemBag {
+			height: 400px;
+			width: 450px;
+
+
+			> .bagBackground {
+				gap: 14px;
+				flex-wrap: wrap;
+				padding: 12px;
+				background-color: #342100;
+
+				> .bagSlotBorder {
+					background-color: gold;
+
+
+					> .bagSlot {
+						border-radius: 8px;
+						width: 64px;
+						height: 64px;
+						background-color: #333;
+
+						> p {
+							flex: none;
+							align-items: center;
+							font-size: 25px;
+							font-weight: bold;
+							color: white;
+						}
+					}
 				}
 			}
 		}

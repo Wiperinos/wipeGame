@@ -1,4 +1,5 @@
 using System.Net.Sockets;
+using System.Numerics;
 using Sandbox;
 
 public sealed class WeaponManager : Component
@@ -15,12 +16,14 @@ public sealed class WeaponManager : Component
 	[Property]
 	[Category( "Gun Components" )]
 	public GameObject bulletSpawnPoint;
-
 	public Player player { get; set; }
-
-
+	public WeaponHands weaponHands { get; set; }
+	public GameObject gameObjectRecived { get; set; }
 
 	public string _weaponName;
+	private bool _isEnabled = false;
+
+
 
 
 	protected override void OnUpdate()
@@ -29,18 +32,16 @@ public sealed class WeaponManager : Component
 		WeaponAttack();
 		drawGizmo();
 	}
-	public void addWeapon( string weapontype )
+	public void addWeapon( string weapontype , GameObject gObjectRecived )
 	{
+		gameObjectRecived = gObjectRecived;
 		_weaponName = weapontype;
 		GameObject.Parent.Components.TryGet<Player>( out var player1 );
 		player = player1;
 		GameObject.Transform.Position = player.weaponPosition.Transform.Position;
-		
+		player.WeaponHoldType( weapontype );
+		player.hotbar.AddItem( (new ItemHelper { itemType = ItemHelper.ItemType.Weapon, amount = 1, name = _weaponName , manager = this }) );
 
-	}
-	public void testweapon()
-	{
-		Log.Info( _weaponName );
 	}
 	public void WeaponAttack()
 	{
@@ -48,7 +49,7 @@ public sealed class WeaponManager : Component
 		{
 			return;
 		}
-		if ( player != null )
+		if ( player != null && (_weaponName == "Pistol") && (_isEnabled == true) )
 		{
 			if ( Input.Down( "Fire2" ) )
 			{
@@ -75,6 +76,19 @@ public sealed class WeaponManager : Component
 					}
 			}
 		}
+		if ( player != null && (_weaponName == "Hands") && (_isEnabled == true) )
+		{
+			if ( Input.Pressed( "Fire2" ) )
+			{
+				//weaponHands.Attack();
+				Log.Info( "wea" );
+			}
+
+		}
+		else
+		{
+			return;
+		}
 	}
 
 	public void drawGizmo()
@@ -92,4 +106,24 @@ public sealed class WeaponManager : Component
 		//bulletSpawnPoint.Transform.Position
 	}
 
+	public void EnableWeapon()
+	{
+		gameObjectRecived.Enabled = true;
+		_isEnabled = true;
+	}
+	public void DisableWeapon()
+	{
+		gameObjectRecived.Enabled = false;
+		_isEnabled = false;
+	}
 }
+/*
+if ( player.currentWeapon != _weaponName )
+{
+	_isEnabled = false;
+}
+else
+{
+	_isEnabled = true;
+}
+*/

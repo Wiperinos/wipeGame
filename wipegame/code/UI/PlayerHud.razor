@@ -3,12 +3,41 @@
 @inherits PanelComponent
 
 <root>
-	<div class="healthBars">
-		<div class="healthBar">
-			<div class="inner">
-				<div class="fill" style="width: @(Uinfo.Health / Uinfo.MaxHealth * 100f)%">
-					<p class="text">@Uinfo.Health / @Uinfo.MaxHealth </p>
+	<div class="bottomBar">
+		<div class="healthBars">
+			<div class="healthBar">
+				<div class="inner">
+					<div class="fill" style="width: @(Uinfo.Health / Uinfo.MaxHealth * 100f)%"></div>
+					<p style="text-align:right"> @Uinfo.Health / @Uinfo.MaxHealth </p>
 				</div>
+			</div>
+		</div>
+		<div class="hotBar">
+			@for (int i = 0; i < player.Slots; i++)
+			{
+				<div class="slot @((player.activeSlot  == i) ? "active" : "") ">
+					@if (i < player.hotbar.HotBarList.Count)
+					{
+						<p class="numPad"> @(i+1)</p>
+						<p class="itemHotbar">@player.hotbar.HotBarList[i].name</p>
+					}
+
+				</div>
+			}
+		</div>
+		<div class="itemBag">
+			<div class="bagBackground">
+				@for (int i = 0; i < player.bagSlots; i++)
+			{
+				<div class="bagSlotBorder">
+						<div class="bagSlot @(( player.activeBagSlot == i)? "active" : "" )">
+							@if (i < player.inventory.itemList.Count)
+							{
+								<p>@player.inventory.itemList[i].name</p>
+							}
+					</div>
+				</div>
+			}
 			</div>
 		</div>
 	</div>
@@ -17,11 +46,11 @@
 @code
 {
 	[Property] UnitInfo Uinfo {get; set;}
+	[Property] Player player { get; set;}
 
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine(Uinfo.Health);
+		return System.HashCode.Combine(Uinfo.Health, player.activeSlot,player.inventory.itemList.Count,player.hotbar.HotBarList.Count);
 	} 
+
 }
-
-

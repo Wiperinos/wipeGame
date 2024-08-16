@@ -36,10 +36,6 @@
         "PunchRange": 50,
         "PunchSTR": 1,
         "RunSpeed": 250,
-        "TestModel": {
-          "_type": "gameobject",
-          "go": "95cf329f-1e8e-4fc7-b4b5-d90eea75c00e"
-        },
         "WalkSpeed": 120,
         "weaponPosition": {
           "_type": "gameobject",
@@ -188,6 +184,12 @@
           {
             "__type": "PlayerHud",
             "__guid": "3dfd4527-341b-4655-b946-e3c9ed573605",
+            "player": {
+              "_type": "component",
+              "component_id": "e38c6173-468e-4c3c-a454-af16f12b6fcd",
+              "go": "2872b84e-6a08-4a94-b97a-4465025ae5e4",
+              "component_type": "Player"
+            },
             "Uinfo": {
               "_type": "component",
               "component_id": "fd3e235c-360d-4581-aebd-5155f1271ef9",

@@ -1,0 +1,107 @@
+{
+  "RootObject": {
+    "__guid": "18879652-89a1-4dc2-8749-4eca41d419af",
+    "Flags": 0,
+    "Name": "hands",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "WeaponManager",
+        "__guid": "53f23635-fc7d-4907-b6a0-6b642cfdd517",
+        "bulletPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefab/bullet.prefab"
+        },
+        "bulletSpawnPoint": {
+          "_type": "gameobject",
+          "go": "ae41c443-186b-4403-b908-585b9c4451ac"
+        },
+        "weaponDamage": 1,
+        "weaponSpeed": 1000
+      },
+      {
+        "__type": "WeaponHands",
+        "__guid": "c6e6727e-98a9-4d17-8a9e-5441a53c1f0b",
+        "PunchRange": 0,
+        "punchCooldown": 0,
+        "punchDamage": 0
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "16cf49aa-6e8b-4235-98bf-fce5ef1d6d9f",
+        "Flags": 0,
+        "Name": "WeaponTrigger",
+        "Tags": "trigger",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "2f71aa0d-a6dc-4ba5-9d25-bcc8656e42de",
+            "Center": "0,0,0",
+            "IsTrigger": true,
+            "Scale": "50,50,50",
+            "Static": false
+          },
+          {
+            "__type": "WeaponTrigger",
+            "__guid": "66c4fe39-48ea-4651-971b-4fb4ae13ff19",
+            "Manager": {
+              "_type": "component",
+              "component_id": "53f23635-fc7d-4907-b6a0-6b642cfdd517",
+              "go": "18879652-89a1-4dc2-8749-4eca41d419af",
+              "component_type": "WeaponManager"
+            },
+            "weaponType": "Hands"
+          }
+        ]
+      },
+      {
+        "__guid": "ae41c443-186b-4403-b908-585b9c4451ac",
+        "Flags": 0,
+        "Name": "BulletSpawn",
+        "Position": "30.49962,0,2.256771",
+        "Enabled": true
+      },
+      {
+        "__guid": "326b0beb-11d2-4502-8579-05451ae96ebb",
+        "Flags": 0,
+        "Name": "Cube (6)",
+        "Scale": "0.1,0.1,0.1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "d34ac020-1b6f-4a4b-9c0a-168f8bf2fa67",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/dev/box.vmdl",
+            "RenderType": "On",
+            "Tint": "0.86512,0.01207,0.01207,1"
+          }
+        ]
+      },
+      {
+        "__guid": "973e12e7-3cb0-4284-be84-1d2ebd1bc69f",
+        "Flags": 0,
+        "Name": "weaponScript",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "WeaponHands",
+            "__guid": "57be5712-ac3b-4f28-93a8-f2c0c5b2718c",
+            "PunchRange": 0,
+            "punchCooldown": 0,
+            "punchDamage": 0
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

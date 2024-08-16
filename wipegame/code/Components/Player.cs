@@ -1,17 +1,21 @@
 using System;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using Sandbox;
 using Sandbox.Citizen;
 using static Sandbox.VertexLayout;
 
 public sealed class Player : Component
 {
+
 	[Property]
 	[Category( "Components" )]
 	public GameObject Camera { get; set; }
 
+
 	[Property]
 	[Category( "Components" )]
-	public GameObject TestModel { get; set; }
+	public GameObject weaponPosition { get; set; }
 
 	[Property]
 	[Category( "Components" )]
@@ -25,15 +29,6 @@ public sealed class Player : Component
 	[Property]
 	[Category( "Components" )]
 	public GameObject objectGrabPointTransform { get; set; }
-
-	[Property]
-	[Category( "Components" )]
-	public WeaponManager weaponManager { get; set; }
-
-	[Property]
-	[Category( "Components" )]
-	public GameObject weaponPosition { get; set; }
-
 	/// <summary>
 	/// Velocidad al Caminar (units per second)
 	/// </summary>
@@ -85,7 +80,7 @@ public sealed class Player : Component
 	public Vector3 EyeWorldPosition => Transform.Local.PointToWorld( EyePosition );
 	public Angles EyeAngles { get; set; }
 	Transform _initialCameraTransform;
-	TimeSince _lastPunch;
+	public TimeSince _lastPunch;
 	public bool IsRunning { get; set; }
 	public bool IsCrouched { get; set; }
 	public bool IsGrabbing { get; set; }
@@ -94,6 +89,15 @@ public sealed class Player : Component
 	public Vector3 CameraForward => Camera.Transform.Rotation.Forward;
 	public Vector3 CameraPosition => Camera.Transform.Position;
 	public float maxDist = 10000;
+	public string currentWeapon;
+	public int lastweapon = 0;
+	public int activeSlot = 0;
+	public int Slots => 5;
+	public int activeBagSlot = 0;
+	public int bagSlots => 25;
+	public Inventory inventory;
+	public HotBar hotbar;
+
 
 	protected override void DrawGizmos()
 	{
@@ -106,7 +110,7 @@ public sealed class Player : Component
 		// draw.LineCylinder( EyePosition, EyePosition + Transform.Rotation.Forward * PunchRange, 5f, 5f, 10 ); 
 
 		// rango del grab
-		draw.LineCylinder( EyeWorldPosition,  CameraPosition + CameraForward * GrabRange, 5f, 5f, 10 );
+		draw.LineCylinder( EyeWorldPosition, CameraPosition + CameraForward * GrabRange, 5f, 5f, 10 );
 
 
 
@@ -128,11 +132,31 @@ public sealed class Player : Component
 			Camera.Transform.Position = cameraTrace.EndPosition;
 			Camera.Transform.LocalRotation = cameraTransform.Rotation;
 		}
+		if ( Input.MouseWheel.y >= 0 )
+		{
+			lastweapon = activeSlot;
+			activeSlot = ((activeSlot + Math.Sign( Input.MouseWheel.y )) % Slots);
+			enableDisableWeapons( "Disable", lastweapon );
+			enableDisableWeapons( "Enable", activeSlot );
+			
+
+		}
+		else if ( Input.MouseWheel.y < 0 )
+		{
+			lastweapon = activeSlot;
+			activeSlot = ((activeSlot + Math.Sign( Input.MouseWheel.y )) % Slots) + Slots;
+			enableDisableWeapons( "Disable", lastweapon );
+			enableDisableWeapons( "Enable", activeSlot );
+
+		}
+		//Log.Info( Input.MouseWheel.y );
+
 		UpdateCrouch();
 		UpdateAnimations();
 		UpdateGrab();
 		HighlightTraceGrab();
-		CameraCenterTest();
+		UpdateCurrentWeapon();
+
 	}
 	protected override void OnFixedUpdate()
 	{
@@ -142,8 +166,6 @@ public sealed class Player : Component
 
 		var wishSpeed = Input.Down( "Run" ) ? RunSpeed : WalkSpeed;
 		var wishVelocity = Input.AnalogMove.Normal * wishSpeed * Transform.Rotation;
-
-
 
 
 		Controller.Accelerate( wishVelocity );
@@ -178,14 +200,18 @@ public sealed class Player : Component
 		}
 		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
 		{
-			Punch();
 
 		}
 	}
 	protected override void OnStart()
 	{
-		if ( Camera != null )
+
+		if (Camera != null ){
 			_initialCameraTransform = Camera.Transform.Local;
+		}
+		inventory = new Inventory();
+		hotbar = new HotBar();
+
 	}
 	protected override void OnEnabled()
 	{
@@ -198,26 +224,6 @@ public sealed class Player : Component
 	protected override void OnDestroy()
 	{
 		base.OnDestroy();
-	}
-	public void Punch()
-	{
-		if ( Animator != null )
-		{
-			Animator.HoldType = CitizenAnimationHelper.HoldTypes.Punch;
-			Animator.Target.Set( "b_attack", true );
-		}
-		var punchTrace = Scene.Trace
-			.FromTo( EyeWorldPosition, EyeWorldPosition + EyeAngles.Forward * PunchRange )
-			.Size( 10f )
-			.WithoutTags( "player" )
-			.IgnoreGameObjectHierarchy( GameObject )
-			.Run();
-		if ( punchTrace.Hit )
-			if ( punchTrace.GameObject.Components.TryGet<UnitInfo>( out var unitInfo ) )
-				unitInfo.Damage( PunchSTR );
-
-
-		_lastPunch = 0f;
 	}
 	public void Grab()
 	{
@@ -268,7 +274,6 @@ public sealed class Player : Component
 			Controller.Height /= 2f;
 
 			EyePosition = new Vector3  (EyePosition.x , EyePosition.y , (EyePosition.z/2)) ;
-			Log.Info( Camera.Transform.Local.Position );
 			//Camera.Transform.Local.Position = new Vector3( Camera.Transform.Local.Position.x, Camera.Transform.Local.Position.y, (Camera.Transform.Local.Position.z / 2) );
 			//objectGrabPointTransform.Transform.Position  2f;
 
@@ -281,8 +286,7 @@ public sealed class Player : Component
 		}
 	}
 	void UpdateAnimations()
-	{
-		
+	{	
 		Animator.DuckLevel = IsCrouched ? 1f : 0f;
 		Animator.IsGrounded = Controller.IsOnGround;
 	}
@@ -331,5 +335,43 @@ public sealed class Player : Component
 			//TestModel.Transform.Position = tr.HitPosition;
 		}
 	}
+	public void WeaponHoldType(string weaponName)
+	{
+		//Log.Info( weaponName );
+		if ( weaponName == "Pistol" )
+		{
+			Animator.HoldType = CitizenAnimationHelper.HoldTypes.Pistol;
+		}
+		else
+		{
+			Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		}
+	}
+
+	public void UpdateCurrentWeapon()
+	{
+		try
+		{
+			currentWeapon = hotbar.HotBarList[activeSlot].name;
+		}
+		catch
+		{
+			currentWeapon = "None";
+		}
+
+	}
+	public void enableDisableWeapons(string status, int weapon)
+	{
+		if (status == "Enable" )
+		{
+			hotbar.HotBarList[weapon].manager.EnableWeapon();
+
+		}
+		else if (status == "Disable")
+		{
+			hotbar.HotBarList[weapon].manager.DisableWeapon();
+		}
+	}
+
 
 }

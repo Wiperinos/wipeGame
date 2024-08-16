@@ -9,6 +9,7 @@ public sealed class WeaponTrigger : Component, Component.ITriggerListener
 	[Category( "Components" )]
 	public WeaponManager Manager { get; set; }
 
+	public GameObject gameObjectParent;
 
 	public void OnTriggerEnter( Collider other )
 	{
@@ -17,7 +18,9 @@ public sealed class WeaponTrigger : Component, Component.ITriggerListener
 			GameObject.Parent.Transform.Position = new Vector3( 0, 0, 0 );
 			GameObject.Parent.Name = weaponType;
 			GameObject.Parent.Parent = other.GameObject;
-			Manager.addWeapon( weaponType );
+			gameObjectParent = GameObject.Parent;
+			Manager.addWeapon( weaponType, gameObjectParent );
+			GameObject.Parent.Enabled = false;
 			GameObject.Enabled = false;
 		}
 		else return;
