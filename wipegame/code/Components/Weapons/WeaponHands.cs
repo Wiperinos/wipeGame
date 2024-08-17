@@ -1,5 +1,7 @@
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.UI;
+using Sandbox.UI.Construct;
 
 public sealed class WeaponHands : Component
 {
@@ -15,10 +17,11 @@ public sealed class WeaponHands : Component
 	[Property]
 	[Category( "Gun Components" )]
 	private float PunchRange;
-	public Player player { get; set; }
-
-	public void Attack()
+	private Player player { get; set; }
+	[Property] 
+	public void Attack(Player PL)
 	{
+		player = PL;
 		if ( player.Animator != null )
 		{
 			player.Animator.HoldType = CitizenAnimationHelper.HoldTypes.Punch;

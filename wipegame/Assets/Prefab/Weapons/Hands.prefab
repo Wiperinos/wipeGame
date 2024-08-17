@@ -6,25 +6,51 @@
     "Enabled": true,
     "Components": [
       {
-        "__type": "WeaponManager",
-        "__guid": "53f23635-fc7d-4907-b6a0-6b642cfdd517",
-        "bulletPrefab": {
+        "__type": "EquipmentManager",
+        "__guid": "10871e0e-da69-4797-a5a0-9ac8c91bbf5e",
+        "BulletPrefab": {
           "_type": "gameobject",
           "prefab": "prefab/bullet.prefab"
         },
-        "bulletSpawnPoint": {
+        "Attachment": "hand_R",
+        "AttachmentTransform": {
+          "UniformScale": 1,
+          "IsValid": true,
+          "ForwardRay": {
+            "Forward": "1,0,0"
+          },
+          "Scale": "1,1,1",
+          "Rotation": "0,0,0,1"
+        },
+        "BulletSpawnPoint": {
           "_type": "gameobject",
           "go": "ae41c443-186b-4403-b908-585b9c4451ac"
         },
-        "weaponDamage": 1,
-        "weaponSpeed": 1000
+        "HoldType": "Punch",
+        "IsItem": true,
+        "IsMelee": true,
+        "IsWeapon": true,
+        "ItemDamage": 100,
+        "ItemSpeed": 0,
+        "ItemSpread": 0,
+        "MeleeCooldown": 1,
+        "MeleeRange": 45,
+        "Name": "Jarr",
+        "Slot": "Hand",
+        "ThisGameObject": {
+          "_type": "gameobject",
+          "go": "18879652-89a1-4dc2-8749-4eca41d419af"
+        },
+        "UpdatePosition": true,
+        "WeaponType": "Fists"
       },
       {
-        "__type": "WeaponHands",
-        "__guid": "c6e6727e-98a9-4d17-8a9e-5441a53c1f0b",
-        "PunchRange": 0,
-        "punchCooldown": 0,
-        "punchDamage": 0
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "7b9bd147-cbba-4404-a65a-6501679f75ff",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/citizen_props/beertankard01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
       }
     ],
     "Children": [
@@ -46,11 +72,11 @@
           {
             "__type": "WeaponTrigger",
             "__guid": "66c4fe39-48ea-4651-971b-4fb4ae13ff19",
-            "Manager": {
+            "EquipmentManager": {
               "_type": "component",
-              "component_id": "53f23635-fc7d-4907-b6a0-6b642cfdd517",
+              "component_id": "10871e0e-da69-4797-a5a0-9ac8c91bbf5e",
               "go": "18879652-89a1-4dc2-8749-4eca41d419af",
-              "component_type": "WeaponManager"
+              "component_type": "EquipmentManager"
             },
             "weaponType": "Hands"
           }
@@ -62,38 +88,6 @@
         "Name": "BulletSpawn",
         "Position": "30.49962,0,2.256771",
         "Enabled": true
-      },
-      {
-        "__guid": "326b0beb-11d2-4502-8579-05451ae96ebb",
-        "Flags": 0,
-        "Name": "Cube (6)",
-        "Scale": "0.1,0.1,0.1",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "d34ac020-1b6f-4a4b-9c0a-168f8bf2fa67",
-            "BodyGroups": 18446744073709551615,
-            "Model": "models/dev/box.vmdl",
-            "RenderType": "On",
-            "Tint": "0.86512,0.01207,0.01207,1"
-          }
-        ]
-      },
-      {
-        "__guid": "973e12e7-3cb0-4284-be84-1d2ebd1bc69f",
-        "Flags": 0,
-        "Name": "weaponScript",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "WeaponHands",
-            "__guid": "57be5712-ac3b-4f28-93a8-f2c0c5b2718c",
-            "PunchRange": 0,
-            "punchCooldown": 0,
-            "punchDamage": 0
-          }
-        ]
       }
     ],
     "__variables": []

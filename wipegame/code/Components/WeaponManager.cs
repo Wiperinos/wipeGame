@@ -39,8 +39,6 @@ public sealed class WeaponManager : Component
 		GameObject.Parent.Components.TryGet<Player>( out var player1 );
 		player = player1;
 		GameObject.Transform.Position = player.weaponPosition.Transform.Position;
-		player.WeaponHoldType( weapontype );
-		player.hotbar.AddItem( (new ItemHelper { itemType = ItemHelper.ItemType.Weapon, amount = 1, name = _weaponName , manager = this }) );
 
 	}
 	public void WeaponAttack()

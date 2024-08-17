@@ -16,10 +16,10 @@
 			@for (int i = 0; i < player.Slots; i++)
 			{
 				<div class="slot @((player.activeSlot  == i) ? "active" : "") ">
-					@if (i < player.hotbar.HotBarList.Count)
+					@if (i < player.inventory.itemList.Count)
 					{
-						<p class="numPad"> @(i+1)</p>
-						<p class="itemHotbar">@player.hotbar.HotBarList[i].name</p>
+						<p class="numPad"> @(i + 1)</p>
+						<p class="itemHotbar">@player.inventory.itemList[i].Name</p>
 					}
 
 				</div>
@@ -27,15 +27,15 @@
 		</div>
 		<div class="itemBag">
 			<div class="bagBackground">
-				@for (int i = 0; i < player.bagSlots; i++)
+				@for (int i = 5; i < player.bagSlots; i++)
 			{
 				<div class="bagSlotBorder">
 						<div class="bagSlot @(( player.activeBagSlot == i)? "active" : "" )">
 							@if (i < player.inventory.itemList.Count)
 							{
-								<p>@player.inventory.itemList[i].name</p>
+								<p>@player.inventory.itemList[i].Name</p>
 							}
-					</div>
+						</div>
 				</div>
 			}
 			</div>
@@ -50,7 +50,7 @@
 
 	protected override int BuildHash()
 	{
-		return System.HashCode.Combine(Uinfo.Health, player.activeSlot,player.inventory.itemList.Count,player.hotbar.HotBarList.Count);
+		return System.HashCode.Combine(Uinfo.Health, player.activeSlot,player.inventory.itemList.Count);
 	} 
 
 }

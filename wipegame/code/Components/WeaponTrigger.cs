@@ -7,7 +7,7 @@ public sealed class WeaponTrigger : Component, Component.ITriggerListener
 	public string weaponType { get; set; }
 	[Property]
 	[Category( "Components" )]
-	public WeaponManager Manager { get; set; }
+	public EquipmentManager EquipmentManager { get; set; }
 
 	public GameObject gameObjectParent;
 
@@ -19,7 +19,10 @@ public sealed class WeaponTrigger : Component, Component.ITriggerListener
 			GameObject.Parent.Name = weaponType;
 			GameObject.Parent.Parent = other.GameObject;
 			gameObjectParent = GameObject.Parent;
-			Manager.addWeapon( weaponType, gameObjectParent );
+
+			other.GameObject.Components.TryGet<Player>( out var player );
+			player.inventory.AddItem( EquipmentManager );
+
 			GameObject.Parent.Enabled = false;
 			GameObject.Enabled = false;
 		}

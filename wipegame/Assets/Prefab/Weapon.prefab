@@ -6,22 +6,42 @@
     "Enabled": true,
     "Components": [
       {
-        "__type": "WeaponManager",
-        "__guid": "6df0a7d0-60dd-46a0-a760-743c7af7914a",
-        "bulletPrefab": {
+        "__type": "EquipmentManager",
+        "__guid": "089416c9-380f-41c0-b781-d462b72eae30",
+        "BulletPrefab": {
           "_type": "gameobject",
           "prefab": "prefab/bullet.prefab"
         },
-        "bulletSpawnPoint": {
+        "Attachment": "hand_R",
+        "AttachmentTransform": {
+          "UniformScale": 1,
+          "IsValid": true,
+          "ForwardRay": {
+            "Forward": "1,0,0"
+          },
+          "Scale": "1,1,1",
+          "Rotation": "0,0,0,1"
+        },
+        "BulletSpawnPoint": {
           "_type": "gameobject",
           "go": "04082afb-f62d-4115-a701-50fdb20e82e7"
         },
-        "weaponDamage": 1,
-        "weaponSpeed": 1000
-      },
-      {
-        "__type": "ItemHelper",
-        "__guid": "d3b4db6d-648b-4b87-a113-4015f8bf061a"
+        "HoldType": "Pistol",
+        "IsItem": true,
+        "IsMelee": false,
+        "IsWeapon": true,
+        "ItemDamage": 10,
+        "ItemSpeed": 300,
+        "ItemSpread": 0,
+        "MeleeRange": 0,
+        "Name": "Pistol",
+        "Slot": "Hand",
+        "ThisGameObject": {
+          "_type": "gameobject",
+          "go": "037c8f1a-5e76-465c-acf5-b776dc3c1338"
+        },
+        "UpdatePosition": false,
+        "WeaponType": "Pistol"
       }
     ],
     "Children": [
@@ -43,11 +63,11 @@
           {
             "__type": "WeaponTrigger",
             "__guid": "f56b320c-d669-4d6e-80b2-6774308d754c",
-            "Manager": {
+            "EquipmentManager": {
               "_type": "component",
-              "component_id": "6df0a7d0-60dd-46a0-a760-743c7af7914a",
+              "component_id": "089416c9-380f-41c0-b781-d462b72eae30",
               "go": "037c8f1a-5e76-465c-acf5-b776dc3c1338",
-              "component_type": "WeaponManager"
+              "component_type": "EquipmentManager"
             },
             "weaponType": "Pistol"
           }
