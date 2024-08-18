@@ -1,63 +1,63 @@
 {
   "RootObject": {
-    "__guid": "18879652-89a1-4dc2-8749-4eca41d419af",
+    "__guid": "c3d9b71e-fc16-46c3-8c4d-f2789676cfd4",
     "Flags": 0,
-    "Name": "hands",
+    "Name": "pistol 2",
     "Enabled": true,
     "Components": [
       {
         "__type": "EquipmentManager",
-        "__guid": "10871e0e-da69-4797-a5a0-9ac8c91bbf5e",
+        "__guid": "43972a1c-409b-4463-bb64-1b3934c50416",
         "BulletPrefab": {
           "_type": "gameobject",
           "prefab": "prefab/bullet.prefab"
         },
         "Attachment": "hand_R",
         "AttachmentTransform": {
-          "UniformScale": 1,
+          "UniformScale": 4.1,
           "IsValid": true,
           "ForwardRay": {
-            "Position": "10.5913,-6.396226,-2.308314",
-            "Forward": "1,0,0"
+            "Position": "3.6,1.1,-1.8",
+            "Forward": "0.9822264,-0.08938962,-0.1650476"
           },
-          "Position": "10.5913,-6.396226,-2.308314",
-          "Scale": "1,1,1",
-          "Rotation": "-0.6360207,0,0,0.7716721"
+          "Position": "3.6,1.1,-1.8",
+          "Scale": "4.1,1.4,1",
+          "Rotation": "-0.6373033,0.09242177,0.01857403,0.7648253"
         },
         "BulletSpawnPoint": {
           "_type": "gameobject",
-          "go": "ae41c443-186b-4403-b908-585b9c4451ac"
+          "go": "c1dd6330-0c2d-4685-a84b-82c5f0e86b7c"
         },
-        "HoldType": "HoldItem",
+        "HoldType": "Pistol",
         "IsItem": true,
-        "IsMelee": true,
+        "IsMelee": false,
         "IsWeapon": true,
-        "ItemDamage": 100,
-        "ItemSpeed": 0,
+        "ItemDamage": 10,
+        "ItemSpeed": 5000,
         "ItemSpread": 0,
-        "MeleeCooldown": 1,
-        "MeleeRange": 45,
-        "Name": "Jarr",
+        "MeleeCooldown": 0,
+        "MeleeRange": 0,
+        "Name": "Pistol",
         "Slot": "Hand",
         "ThisGameObject": {
           "_type": "gameobject",
-          "go": "18879652-89a1-4dc2-8749-4eca41d419af"
+          "go": "c3d9b71e-fc16-46c3-8c4d-f2789676cfd4"
         },
         "UpdatePosition": true,
-        "WeaponType": "Fists"
+        "WeaponType": "Pistol"
       },
       {
         "__type": "Sandbox.ModelRenderer",
-        "__guid": "e0fd3fc2-c033-4d31-897f-af0670cb9d31",
+        "__guid": "1de111f0-f10a-4eeb-8ac1-458305c454c4",
         "BodyGroups": 18446744073709551615,
-        "Model": "models/citizen_props/beertankard01.vmdl",
+        "Model": "models/weapons/pistol.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       }
     ],
     "Children": [
       {
-        "__guid": "16cf49aa-6e8b-4235-98bf-fce5ef1d6d9f",
+        "__guid": "3b39b287-922d-4b0d-8ace-e329be39b2b3",
         "Flags": 0,
         "Name": "WeaponTrigger",
         "Tags": "trigger",
@@ -65,7 +65,7 @@
         "Components": [
           {
             "__type": "Sandbox.BoxCollider",
-            "__guid": "2f71aa0d-a6dc-4ba5-9d25-bcc8656e42de",
+            "__guid": "63186190-8208-412a-b325-78cf109cd519",
             "Center": "0,0,0",
             "IsTrigger": true,
             "Scale": "50,50,50",
@@ -73,22 +73,23 @@
           },
           {
             "__type": "WeaponTrigger",
-            "__guid": "66c4fe39-48ea-4651-971b-4fb4ae13ff19",
+            "__guid": "e9b3bca7-b526-4931-b650-93777bb4fcbf",
             "EquipmentManager": {
               "_type": "component",
-              "component_id": "10871e0e-da69-4797-a5a0-9ac8c91bbf5e",
-              "go": "18879652-89a1-4dc2-8749-4eca41d419af",
+              "component_id": "43972a1c-409b-4463-bb64-1b3934c50416",
+              "go": "c3d9b71e-fc16-46c3-8c4d-f2789676cfd4",
               "component_type": "EquipmentManager"
             },
-            "weaponType": "Hands"
+            "weaponType": "Pistol"
           }
         ]
       },
       {
-        "__guid": "ae41c443-186b-4403-b908-585b9c4451ac",
+        "__guid": "c1dd6330-0c2d-4685-a84b-82c5f0e86b7c",
         "Flags": 0,
         "Name": "BulletSpawn",
-        "Position": "30.49962,0,2.256771",
+        "Position": "3.678453,0.1249651,3.512299",
+        "Rotation": "0.04193087,-0.005139229,0.06977145,0.9966671",
         "Enabled": true
       }
     ],

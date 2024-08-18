@@ -4,8 +4,6 @@ using System.Numerics;
 public sealed class Inventory : Component
 {
 	public List<EquipmentManager> itemList;
-	private GameObject GameObjectRecived { get; set; }
-
 	public Inventory()
 	{
 		itemList = new List<EquipmentManager>();
@@ -19,7 +17,7 @@ public sealed class Inventory : Component
 	{
 		return itemList;
 	}
-	public void enableDisableWeapons( string status, int weapon )
+	public void EnableDisableWeapons( string status, int weapon )
 	{
 		if ( status == "Enable" )
 		{

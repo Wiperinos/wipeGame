@@ -86,7 +86,7 @@
           "GroupName": "Actions"
         },
         {
-          "Name": "reload",
+          "Name": "Test",
           "KeyboardCode": "T",
           "GamepadCode": "X",
           "GroupName": "Actions"

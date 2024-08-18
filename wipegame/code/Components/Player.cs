@@ -1,4 +1,5 @@
 using System;
+using System.Net.Mail;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using Editor;
@@ -13,10 +14,6 @@ public sealed class Player : Component
 	[Category( "Components" )]
 	public GameObject Camera { get; set; }
 
-
-	[Property]
-	[Category( "Components" )]
-	public GameObject weaponPosition { get; set; }
 
 	[Property]
 	[Category( "Components" )]
@@ -54,22 +51,6 @@ public sealed class Player : Component
 	/// <summary>
 	/// Dmg por Golpe
 	/// </summary>
-	[Property]
-	[Category( "Stats" )]
-	[Range( 0f, 5f, 0.1f )]
-	public float PunchSTR { get; set; } = 1f;
-	/// <summary>
-	/// Cooldown por golpe
-	/// </summary>
-	[Property]
-	[Category( "Stats" )]
-	public float PunchCooldown { get; set; } = 0.5f;
-	/// <summary>
-	/// Rango del golpe
-	/// </summary>
-	[Property]
-	[Category( "Stats" )]
-	public float PunchRange { get; set; } = 50f;
 	[Property]
 	[Category( "Stats" )]
 	public float GrabRange { get; set; } = 50f;
@@ -144,31 +125,18 @@ public sealed class Player : Component
 			lastweapon = activeSlot;
 			activeSlot = ((activeSlot + Math.Sign( Input.MouseWheel.y )) % Slots) + Slots;
 		}
+
+
 		UpdateCrouch();
 		UpdateAnimations();
 		UpdateGrab();
 		HighlightTraceGrab();
 		UpdateCurrentWeapon();
-		try
+		WeaponFire();
+		if ( Input.Pressed("Test") )
 		{
-			if ( inventory.itemList[activeSlot] != null )
-			{
-				if ( Input.Down( "Fire2" ) )
-				{
-					inventory.itemList[activeSlot].WeaponAttack( this );
-				}
-			}
-			else
-			{
-				return;
-			}
+			WeaponBonemerge();
 		}
-		catch
-		{
-			return;
-		}
-
-	
 	}
 	protected override void OnFixedUpdate()
 	{
@@ -200,20 +168,11 @@ public sealed class Player : Component
 			Controller.Acceleration = 5f;
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		}
-
-		Controller.Move();
-
 		if ( Animator != null )
 		{
 			Animator.WithVelocity( Controller.Velocity );
-
-			if ( _lastPunch >= 2f )
-				Animator.HoldType = CitizenAnimationHelper.HoldTypes.None;
 		}
-		if ( Input.Pressed( "Punch" ) && _lastPunch >= PunchCooldown )
-		{
-
-		}
+		Controller.Move();
 	}
 	protected override void OnStart()
 	{
@@ -361,6 +320,7 @@ public sealed class Player : Component
 		try
 		{
 			WeaponHoldType( inventory.itemList[activeSlot].HoldType.ToString() );
+
 		}
 		catch
 		{
@@ -368,8 +328,46 @@ public sealed class Player : Component
 		}
 		try
 		{
-			inventory.enableDisableWeapons( "Disable", lastweapon );
-			inventory.enableDisableWeapons( "Enable", activeSlot );
+			inventory.EnableDisableWeapons( "Disable", lastweapon );
+			inventory.EnableDisableWeapons( "Enable", activeSlot );
+		}
+		catch
+		{
+			return;
+		}
+	}
+	public void WeaponBonemerge()
+	{
+		try
+		{
+			var inv = inventory.itemList[activeSlot];
+			var attachment = Animator.Target.GetAttachment( inv.Attachment ) ?? global::Transform.Zero;
+			inv.GameObject.Transform.World = attachment.ToWorld( inv.AttachmentTransform );
+			inv.GameObject.SetParent( Animator.Target.GetBoneObject( inv.Attachment ) );
+
+		}
+		catch
+		{
+			return;
+		}
+
+	}
+
+	public void WeaponFire()
+	{
+		try
+		{
+			if ( inventory.itemList[activeSlot] != null )
+			{
+				if ( Input.Pressed( "Fire2" ) )
+				{
+					inventory.itemList[activeSlot].WeaponAttack( this );
+				}
+			}
+			else
+			{
+				return;
+			}
 		}
 		catch
 		{

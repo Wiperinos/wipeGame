@@ -777,7 +777,7 @@
       "__guid": "7937f9c0-2c08-4422-9fed-4723f0bd1d8f",
       "Flags": 0,
       "Name": "weapon_pistol",
-      "Position": "-5.135914,262.2005,45.26488",
+      "Position": "233.7456,43.5876,45.26488",
       "Enabled": true,
       "__Prefab": "prefab/weapon.prefab",
       "__PrefabVariables": {}
@@ -786,9 +786,18 @@
       "__guid": "18879652-89a1-4dc2-8749-4eca41d419af",
       "Flags": 0,
       "Name": "weapon_hands",
-      "Position": "-5.135914,92.1252,45.26488",
+      "Position": "118.597,-142.0513,45.2649",
       "Enabled": true,
       "__Prefab": "prefab/weapons/hands.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "df22e9d9-df5b-4cca-b91c-c9e71e02ab87",
+      "Flags": 0,
+      "Name": "pistol",
+      "Position": "87.0177,31.3238,-0.0000009536743",
+      "Enabled": true,
+      "__Prefab": "prefab/weapons/pistol.prefab",
       "__PrefabVariables": {}
     }
   ],

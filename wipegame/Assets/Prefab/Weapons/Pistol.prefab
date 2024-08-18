@@ -1,135 +1,95 @@
 {
   "RootObject": {
-    "__guid": "b7a25a36-d354-4712-8dae-b47e5584db82",
+    "__guid": "d34228f3-2e9c-416b-9fce-e0bc109a9dbf",
     "Flags": 0,
     "Name": "pistol",
     "Enabled": true,
+    "Components": [
+      {
+        "__type": "EquipmentManager",
+        "__guid": "4c7cafc7-e392-4cde-8707-0007fd321e05",
+        "BulletPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefab/bullet.prefab"
+        },
+        "Attachment": "hand_R",
+        "AttachmentTransform": {
+          "UniformScale": 4.1,
+          "IsValid": true,
+          "ForwardRay": {
+            "Position": "3.74163,-0.0772149,-1.768044",
+            "Forward": "0.9757058,-0.04799311,-0.2137636"
+          },
+          "Position": "3.74163,-0.0772149,-1.768044",
+          "Scale": "4.1,1.4,1",
+          "Rotation": "-0.655358,0.09676749,0.05275562,0.7472341"
+        },
+        "BulletSpawnPoint": {
+          "_type": "gameobject",
+          "go": "fcc189dd-e356-4ae8-90f6-5868af6d6f9e"
+        },
+        "HoldType": "Pistol",
+        "IsItem": true,
+        "IsMelee": false,
+        "IsWeapon": true,
+        "ItemDamage": 10,
+        "ItemSpeed": 5000,
+        "ItemSpread": 0,
+        "MeleeCooldown": 0,
+        "MeleeRange": 0,
+        "Name": "Pistol",
+        "Slot": "Hand",
+        "ThisGameObject": {
+          "_type": "gameobject",
+          "go": "d34228f3-2e9c-416b-9fce-e0bc109a9dbf"
+        },
+        "UpdatePosition": true,
+        "WeaponType": "Pistol"
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "fbddb828-255b-418d-bb5a-b5a9b5c51591",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/weapons/pistol.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
     "Children": [
       {
-        "__guid": "dbe00ec1-fabf-4875-85d5-ec504260ec9f",
+        "__guid": "e569b74d-2365-4655-b0bf-f3267b8e50fc",
         "Flags": 0,
-        "Name": "Cube",
-        "Position": "30.06505,0,0",
-        "Scale": "0.2,0.2,0.2",
+        "Name": "WeaponTrigger",
+        "Tags": "trigger",
         "Enabled": true,
         "Components": [
           {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "21e6f883-f8c2-4533-a288-5b3ca115f185",
-            "BodyGroups": 18446744073709551615,
-            "Model": "models/dev/box.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "9d2dc9f9-36b1-4a84-affd-bf9c68531ecd",
+            "Center": "0,0,2.5",
+            "IsTrigger": true,
+            "Scale": "10,10,5",
+            "Static": false
+          },
+          {
+            "__type": "WeaponTrigger",
+            "__guid": "4ff2bb66-8a1c-48ac-9b48-19ee1a070fe0",
+            "EquipmentManager": {
+              "_type": "component",
+              "component_id": "4c7cafc7-e392-4cde-8707-0007fd321e05",
+              "go": "d34228f3-2e9c-416b-9fce-e0bc109a9dbf",
+              "component_type": "EquipmentManager"
+            }
           }
         ]
       },
       {
-        "__guid": "8947974e-d596-4b95-990f-9ee091b38843",
+        "__guid": "fcc189dd-e356-4ae8-90f6-5868af6d6f9e",
         "Flags": 0,
-        "Name": "Cube (2)",
-        "Position": "19.98768,0,0",
-        "Scale": "0.2,0.2,0.2",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "cdfbe701-58ce-4d22-b1a0-1c455f71840f",
-            "BodyGroups": 18446744073709551615,
-            "Model": "models/dev/box.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          }
-        ]
-      },
-      {
-        "__guid": "faeb99db-38d4-47d0-bb7c-3ec1ad3d1cff",
-        "Flags": 0,
-        "Name": "Cube (3)",
-        "Position": "9.975285,0,0",
-        "Scale": "0.2,0.2,0.2",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "5716aa3a-2cae-4297-9923-0044c7212b65",
-            "BodyGroups": 18446744073709551615,
-            "Model": "models/dev/box.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          }
-        ]
-      },
-      {
-        "__guid": "4c6466eb-da42-4218-bc2e-a52d5d946d38",
-        "Flags": 0,
-        "Name": "Cube (4)",
-        "Position": "0.01939583,0,0",
-        "Scale": "0.2,0.2,0.2",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "b64e19fa-be4d-4a0e-ba5f-90fe0bf6d5e2",
-            "BodyGroups": 18446744073709551615,
-            "Model": "models/dev/box.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          }
-        ]
-      },
-      {
-        "__guid": "1f2f6caf-8f10-4302-9a45-18a4ecfaade6",
-        "Flags": 0,
-        "Name": "Cube (5)",
-        "Position": "0.01939583,0,-9.90632",
-        "Scale": "0.2,0.2,0.2",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "fb000dcc-250e-4608-9459-d2f7c08e577b",
-            "BodyGroups": 18446744073709551615,
-            "Model": "models/dev/box.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          }
-        ]
-      },
-      {
-        "__guid": "7fa01951-daaa-41c0-8956-d1d2f4c806c0",
-        "Flags": 0,
-        "Name": "Cube (6)",
-        "Position": "0.01939583,0,-19.75299",
-        "Scale": "0.2,0.2,0.2",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "4a4d9c1d-2e7b-44c9-8dea-3bb6348dbe5b",
-            "BodyGroups": 18446744073709551615,
-            "Model": "models/dev/box.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          }
-        ]
-      },
-      {
-        "__guid": "71a5db34-a96b-4dcc-acd5-4987aa59cfa3",
-        "Flags": 0,
-        "Name": "Cube (1)",
-        "Position": "40.0564,0,0",
-        "Scale": "0.2,0.2,0.2",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "e72ef582-8b61-4a5b-8517-1e604e396085",
-            "BodyGroups": 18446744073709551615,
-            "Model": "models/dev/box.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          }
-        ]
+        "Name": "BulletSpawn",
+        "Position": "4.037275,0.1547023,3.762255",
+        "Rotation": "0.04193087,-0.005139229,0.06977145,0.9966671",
+        "Enabled": true
       }
     ],
     "__variables": []
